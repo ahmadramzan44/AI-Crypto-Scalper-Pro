@@ -82,3 +82,15 @@ function calculateRSI(prices, period = 14) {
     return 100 - (100 / (1 + rs));
 
 }
+// ==============================
+// MACD
+// ==============================
+
+function calculateMACD(prices) {
+
+    const ema12 = getEMA(prices, 12);
+    const ema26 = getEMA(prices, 26);
+
+    return ema12 - ema26;
+
+}
