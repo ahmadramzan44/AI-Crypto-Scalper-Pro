@@ -79,7 +79,10 @@ const ema200 = getEMA(closes, 200);        document.getElementById("price").inne
 
         document.getElementById("update").innerText =
             new Date().toLocaleTimeString();
-
+document.getElementById("ema9").innerText = ema9.toFixed(2);
+document.getElementById("ema21").innerText = ema21.toFixed(2);
+document.getElementById("ema50").innerText = ema50.toFixed(2);
+document.getElementById("ema200").innerText = ema200.toFixed(2);
         // Temporary Demo Signal
         const signals = ["BUY", "SELL", "WAIT"];
         const signal = signals[Math.floor(Math.random() * 3)];
