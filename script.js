@@ -74,9 +74,18 @@ const ema50 = getEMA(closes, 50);
 const ema200 = getEMA(closes, 200); 
 
 const rsi = calculateRSI(closes);
-        
+
+const macd = calculateMACD(closes);      
+
 document.getElementById("rsi").innerText = rsi.toFixed(2);
 
+if (macd > 0) {
+    document.getElementById("macd").innerText = "Bullish";
+    document.getElementById("macd").style.color = "lime";
+} else {
+    document.getElementById("macd").innerText = "Bearish";
+    document.getElementById("macd").style.color = "red";
+}
 document.getElementById("price").innerText =
             price.toFixed(2);
 document.getElementById("ema9").innerText = ema9.toFixed(2);
