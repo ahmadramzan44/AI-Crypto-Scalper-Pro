@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AI Crypto Scalper Pro</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<!-- Login Screen -->
+
+<div id="loginPage" class="login-container">
+
+    <div class="login-box">
+
+        <h1>AI Crypto Scalper Pro</h1>
+
+        <p>15 Minute Futures Scalping Assistant</p>
+
+        <input
+        type="text"
+        id="username"
+        placeholder="Username">
+
+        <input
+        type="password"
+        id="password"
+        placeholder="Password">
+
+        <button onclick="login()">
+            Login
+        </button>
+
+    </div>
+
+</div>
+
+<!-- Dashboard -->
+
+<div id="dashboard" class="dashboard">
+
+<header>
+
+<h1>AI Crypto Scalper Pro</h1>
+
+<div class="status">
+🟢 Connected
+</div>
+
+</header>
+
+<!-- Search -->
+
+<section class="search-card">
+
+<input
+type="text"
+id="coin"
+placeholder="BTCUSDT">
+
+<button onclick="analyzeCoin()">
+
+Analyze Coin
+
+</button>
+
+</section>
+
+<!-- Overview -->
+
+<section class="grid">
+
+<div class="card">
+
+<h3>Coin</h3>
+
+<h2 id="coinName">
+
+BTCUSDT
+
+</h2>
+
+</div>
+
+<div class="card">
+
+<h3>Live Price</h3>
+
+<h2 id="price">
+
+--
+
+</h2>
+
+</div>
+
+<div class="card">
+
+<h3>Trend</h3>
+
+<h2 id="trend">
+
+WAIT
+
+</h2>
+
+</div>
+
+<div class="card">
+
+<h3>Signal</h3>
+
+<h2 id="signal">
+
+WAIT
+
+</h2>
+
+</div>
+
+<div class="card">
+
+<h3>Confidence</h3>
+
+<h2 id="confidence">
+
+0%
+
+</h2>
+
+</div>
+
+<div class="card">
+
+<h3>Entry</h3>
+
+<h2 id="entry">
+
+--
+
+</h2>
+
+</div>
+
+<div class="card">
+
+<h3>Stop Loss</h3>
+
+<h2 id="sl">
+
+--
+
+</h2>
+
+</div>
+
+<div class="card">
+
+<h3>Take Profit 1</h3>
+
+<h2 id="tp1">
+
+--
+
+</h2>
+
+</div>
+
+<div class="card">
+
+<h3>Take Profit 2</h3>
+
+<h2 id="tp2">
+
+--
+
+</h2>
+
+</div>
+
+<div class="card">
+
+<h3>Take Profit 3</h3>
+
+<h2 id="tp3">
+
+--
+
+</h2>
+
+</div>
+
+<div class="card">
+
+<h3>Risk Reward</h3>
+
+<h2 id="rr">
+
+--
+
+</h2>
+
+</div>
+
+<div class="card">
+
+<h3>Last Update</h3>
+
+<h2 id="update">
+
+--
+
+</h2>
+
+</div>
+
+</section>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
