@@ -95,7 +95,7 @@ async function loadCoin(symbol) {
             new Date().toLocaleTimeString();
 
         const candles = await getCandles(symbol, "15m", 200);
-
+        const atr = calculateATR(candles);
         const closes = candles.map(c =>
             parseFloat(c[4])
         );
@@ -167,7 +167,26 @@ async function loadCoin(symbol) {
             rsi,
             macd
         );
+const risk = calculateRisk(
+    price,
+    atr,
+    result.signal
+);
 
+document.getElementById("sl").innerText =
+    risk.stopLoss;
+
+document.getElementById("tp1").innerText =
+    risk.tp1;
+
+document.getElementById("tp2").innerText =
+    risk.tp2;
+
+document.getElementById("tp3").innerText =
+    risk.tp3;
+
+document.getElementById("rr").innerText =
+    risk.rr;
         document.getElementById("signal").innerText =
             result.signal;
 
