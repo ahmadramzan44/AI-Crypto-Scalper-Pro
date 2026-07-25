@@ -1,155 +1,235 @@
+/* ===========================
+   AI Crypto Scalper Pro
+   style.css - Part 1
+=========================== */
+
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Arial, Helvetica, sans-serif;
+    font-family:Arial,Helvetica,sans-serif;
 }
 
 body{
     background:#0f172a;
-    color:#fff;
-}
-
-.login-container{
-    width:100%;
-    height:100vh;
+    color:#ffffff;
+    min-height:100vh;
     display:flex;
     justify-content:center;
-    align-items:center;
+    align-items:flex-start;
+    padding:20px;
 }
 
-.login-box{
-    width:400px;
-    max-width:95%;
+.container{
+    width:100%;
+    max-width:1200px;
+}
+
+/* Login */
+
+#login{
+    width:100%;
+    max-width:420px;
+    margin:60px auto;
     background:#1e293b;
     padding:30px;
-    border-radius:15px;
-    box-shadow:0 0 20px rgba(0,255,170,.2);
+    border-radius:16px;
+    box-shadow:0 0 20px rgba(0,255,170,.15);
 }
 
-.login-box h1{
+#login h1{
     text-align:center;
     color:#22c55e;
     margin-bottom:10px;
 }
 
-.login-box p{
+#login p{
     text-align:center;
     color:#cbd5e1;
     margin-bottom:25px;
 }
 
-.login-box input{
+input{
     width:100%;
     padding:14px;
-    margin:10px 0;
+    margin-top:12px;
     border:none;
-    outline:none;
-    border-radius:8px;
+    border-radius:10px;
     background:#334155;
-    color:white;
+    color:#fff;
     font-size:15px;
+    outline:none;
 }
 
-.login-box button{
+input:focus{
+    border:1px solid #22c55e;
+}
+
+button{
     width:100%;
+    margin-top:18px;
     padding:14px;
-    margin-top:15px;
     border:none;
-    border-radius:8px;
+    border-radius:10px;
     background:#22c55e;
     color:white;
     font-size:16px;
     font-weight:bold;
     cursor:pointer;
+    transition:.3s;
 }
 
-.login-box button:hover{
+button:hover{
     background:#16a34a;
 }
 
-.dashboard{
+/* Dashboard */
+
+#dashboard{
     display:none;
-    padding:20px;
-    max-width:1200px;
-    margin:auto;
 }
 
-header{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin-bottom:20px;
-    flex-wrap:wrap;
-}
-
-header h1{
+#dashboard h1{
+    text-align:center;
     color:#22c55e;
-}
-
-.status{
-    background:#14532d;
-    color:#86efac;
-    padding:8px 15px;
-    border-radius:20px;
-}
-
-.search-card{
-    display:flex;
-    gap:10px;
     margin-bottom:20px;
-}
-
-.search-card input{
-    flex:1;
-    padding:14px;
-    border:none;
-    border-radius:8px;
-    background:#334155;
-    color:white;
-}
-
-.search-card button{
-    padding:14px 20px;
-    border:none;
-    border-radius:8px;
-    background:#22c55e;
-    color:white;
-    cursor:pointer;
-    font-weight:bold;
 }
 
 .grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:20px;
+    grid-template-columns:repeat(4,1fr);
+    gap:16px;
 }
 
 .card{
     background:#1e293b;
-    padding:20px;
-    border-radius:15px;
-    box-shadow:0 0 10px rgba(0,0,0,.3);
+    border-radius:14px;
+    padding:18px;
+    box-shadow:0 0 12px rgba(255,255,255,.05);
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-3px);
 }
 
 .card h3{
     color:#94a3b8;
+    font-size:14px;
     margin-bottom:10px;
 }
 
 .card h2{
-    color:white;
+    color:#ffffff;
+    font-size:22px;
 }
+/* ===========================
+   Responsive Layout
+=========================== */
 
-@media(max-width:768px){
+@media (max-width:1100px){
 
-    header{
-        flex-direction:column;
-        gap:15px;
+    .grid{
+        grid-template-columns:repeat(3,1fr);
     }
 
-    .search-card{
-        flex-direction:column;
+}
+
+@media (max-width:768px){
+
+    .grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    #login{
+        margin:30px auto;
+        padding:20px;
+    }
+
+}
+
+@media (max-width:480px){
+
+    .grid{
+        grid-template-columns:1fr;
+    }
+
+    body{
+        padding:10px;
+    }
+
+    .card h2{
+        font-size:20px;
+    }
+
+}
+
+/* ===========================
+   Signal Colours
+=========================== */
+
+.buy{
+    color:#22c55e !important;
+    font-weight:bold;
+}
+
+.sell{
+    color:#ef4444 !important;
+    font-weight:bold;
+}
+
+.wait{
+    color:#f59e0b !important;
+    font-weight:bold;
+}
+
+.bullish{
+    color:#22c55e !important;
+}
+
+.bearish{
+    color:#ef4444 !important;
+}
+
+.sideways{
+    color:#f59e0b !important;
+}
+
+/* ===========================
+   Scrollbar
+=========================== */
+
+::-webkit-scrollbar{
+    width:8px;
+}
+
+::-webkit-scrollbar-track{
+    background:#0f172a;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#22c55e;
+    border-radius:10px;
+}
+
+/* ===========================
+   Animation
+=========================== */
+
+.card{
+    animation:fadeIn .4s ease;
+}
+
+@keyframes fadeIn{
+
+    from{
+        opacity:0;
+        transform:translateY(10px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
     }
 
 }
