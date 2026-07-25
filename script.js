@@ -73,7 +73,10 @@ const ema21 = getEMA(closes, 21);
 const ema50 = getEMA(closes, 50);
 const ema200 = getEMA(closes, 200);        document.getElementById("price").innerText =
             price.toFixed(2);
-
+document.getElementById("ema9").innerText = ema9.toFixed(2);
+document.getElementById("ema21").innerText = ema21.toFixed(2);
+document.getElementById("ema50").innerText = ema50.toFixed(2);
+document.getElementById("ema200").innerText = ema200.toFixed(2);
         document.getElementById("entry").innerText =
             price.toFixed(2);
 
