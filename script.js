@@ -64,8 +64,14 @@ async function loadCoin(symbol) {
         }
 
         const price = parseFloat(data.lastPrice);
+const candles = await getCandles(symbol, "15m", 200);
 
-        document.getElementById("price").innerText =
+const closes = candles.map(candle => parseFloat(candle[4]));
+
+const ema9 = getEMA(closes, 9);
+const ema21 = getEMA(closes, 21);
+const ema50 = getEMA(closes, 50);
+const ema200 = getEMA(closes, 200);        document.getElementById("price").innerText =
             price.toFixed(2);
 
         document.getElementById("entry").innerText =
