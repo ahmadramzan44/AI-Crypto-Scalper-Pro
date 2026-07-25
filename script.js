@@ -71,7 +71,10 @@ const closes = candles.map(candle => parseFloat(candle[4]));
 const ema9 = getEMA(closes, 9);
 const ema21 = getEMA(closes, 21);
 const ema50 = getEMA(closes, 50);
-const ema200 = getEMA(closes, 200);        
+const ema200 = getEMA(closes, 200); 
+
+const rsi = calculateRSI(closes);
+        
 document.getElementById("rsi").innerText = rsi.toFixed(2);
 
 document.getElementById("price").innerText =
