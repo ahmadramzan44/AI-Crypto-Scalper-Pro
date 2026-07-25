@@ -94,3 +94,38 @@ function calculateMACD(prices) {
     return ema12 - ema26;
 
 }
+// ==============================
+// ATR (Average True Range)
+// ==============================
+
+function calculateATR(candles, period = 14) {
+
+    if (candles.length < period + 1) {
+        return 0;
+    }
+
+    let trueRanges = [];
+
+    for (let i = 1; i < candles.length; i++) {
+
+        const high = parseFloat(candles[i][2]);
+        const low = parseFloat(candles[i][3]);
+        const prevClose = parseFloat(candles[i - 1][4]);
+
+        const tr = Math.max(
+            high - low,
+            Math.abs(high - prevClose),
+            Math.abs(low - prevClose)
+        );
+
+        trueRanges.push(tr);
+    }
+
+    const recentTR = trueRanges.slice(-period);
+
+    const atr =
+        recentTR.reduce((sum, value) => sum + value, 0) / period;
+
+    return atr;
+
+}
