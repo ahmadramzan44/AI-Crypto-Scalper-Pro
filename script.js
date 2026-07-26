@@ -279,6 +279,8 @@ for(const item of scannerResults){
     );
 
 }
+
+}
 function loadChart(symbol){
 
     document.getElementById("tvChart").innerHTML = "";
