@@ -884,6 +884,29 @@ risk.tp3;
 document.getElementById("rr").innerText =
 risk.rr;
 
+const balance =
+parseFloat(document.getElementById("balance").value);
+
+const riskPercent =
+parseFloat(document.getElementById("riskPercent").value);
+
+const riskAmount =
+balance * (riskPercent / 100);
+
+const stopDistance =
+Math.abs(price - parseFloat(risk.stopLoss));
+
+let position = 0;
+
+if(stopDistance > 0){
+
+    position = riskAmount / stopDistance;
+
+}
+
+document.getElementById("positionSize").innerText =
+position.toFixed(2);
+
 // =============================
 // Signal Colours
 // =============================
