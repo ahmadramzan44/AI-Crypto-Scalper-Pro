@@ -105,6 +105,13 @@ price.toFixed(2);
 document.getElementById("entry").innerText =
 price.toFixed(2);
 
+const entryLow = (price - (atr * 0.20)).toFixed(2);
+
+const entryHigh = (price + (atr * 0.20)).toFixed(2);
+
+document.getElementById("entryZone").innerText =
+entryLow + " - " + entryHigh;
+    
 document.getElementById("update").innerText =
 new Date().toLocaleTimeString();
 
