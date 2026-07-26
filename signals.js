@@ -26,13 +26,23 @@ function generateSignal(
 
     if(ema50 > ema200) score += 20;
 
-    // RSI (20 Points)
+   // RSI (20 Points)
 
-    if(rsi >= 55 && rsi <= 70){
+if(rsi >= 55 && rsi <= 65){
 
-        score += 20;
+    score += 20;
 
-    }
+}
+else if(rsi >= 50 && rsi < 55){
+
+    score += 10;
+
+}
+else if(rsi > 65 && rsi <= 70){
+
+    score += 10;
+
+}
 // ADX (20 Points)
 
 if(adx >= 25){
