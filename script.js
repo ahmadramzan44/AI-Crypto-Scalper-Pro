@@ -872,6 +872,53 @@ else{
     "sell";
 
 }
+
+let quality = "Poor";
+
+if(winProbability >= 95){
+
+    quality = "Excellent";
+
+}
+else if(winProbability >= 85){
+
+    quality = "Good";
+
+}
+else if(winProbability >= 70){
+
+    quality = "Average";
+
+}
+
+document.getElementById("signalQuality").innerText =
+quality;
+
+if(quality === "Excellent"){
+
+    document.getElementById("signalQuality").className =
+    "buy";
+
+}
+else if(quality === "Good"){
+
+    document.getElementById("signalQuality").className =
+    "buy";
+
+}
+else if(quality === "Average"){
+
+    document.getElementById("signalQuality").className =
+    "wait";
+
+}
+else{
+
+    document.getElementById("signalQuality").className =
+    "sell";
+
+}
+    
 if(lastHistorySignal !== symbol + finalSignal){
 
     lastHistorySignal = symbol + finalSignal;
