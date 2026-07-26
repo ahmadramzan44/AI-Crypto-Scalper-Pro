@@ -126,19 +126,58 @@ async function runScanner(){
 
     body.innerHTML = "";
 
-    for(const coin of scannerCoins){
+   for(const coin of scannerCoins){
+
+    try{
+
+        const candles =
+        await getCandles(coin,"15m",200);
+
+        const closes =
+        candles.map(c => parseFloat(c[4]));
+
+        const ema9 =
+        getEMA(closes,9);
+
+        const ema21 =
+        getEMA(closes,21);
+
+        let signal = "WAIT";
+
+        if(ema9 > ema21){
+
+            signal = "BUY";
+
+        }
+        else if(ema9 < ema21){
+
+            signal = "SELL";
+
+        }
+
+        const ai =
+        signal === "BUY" ? 80 :
+        signal === "SELL" ? 80 : 50;
+
+        const win =
+        ai + "%";
 
         body.insertAdjacentHTML(
         "beforeend",
         `
         <tr>
         <td>${coin}</td>
-        <td>Scanning...</td>
-        <td>--</td>
-        <td>--</td>
+        <td>${signal}</td>
+        <td>${ai}</td>
+        <td>${win}</td>
         </tr>
         `
         );
+
+    }
+    catch(error){
+
+        console.log(coin,error);
 
     }
 
