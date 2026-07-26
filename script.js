@@ -817,3 +817,21 @@ catch(error){
 }
 
 }
+function loadChart(symbol){
+
+    document.getElementById("tvChart").innerHTML = "";
+
+    new TradingView.widget({
+
+        autosize: true,
+        symbol: "BINANCE:" + symbol,
+        interval: "15",
+        timezone: "Etc/UTC",
+        theme: "dark",
+        style: "1",
+        locale: "en",
+        container_id: "tvChart"
+
+    });
+
+}
