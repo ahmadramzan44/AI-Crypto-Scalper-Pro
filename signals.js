@@ -45,18 +45,33 @@ else if(rsi > 65 && rsi <= 70){
 }
 // ADX (20 Points)
 
-if(adx >= 25){
+if(adx >= 35){
 
     score += 20;
 
 }
-    // MACD (20 Points)
+else if(adx >= 25){
 
-    if(macd > 0){
+    score += 10;
 
-        score += 20;
+}
+else if(adx >= 20){
 
-    }
+    score += 5;
+
+}
+  // MACD (20 Points)
+
+if(macd > 1){
+
+    score += 20;
+
+}
+else if(macd > 0){
+
+    score += 10;
+
+}
 
     // Volume (20 Points)
 
@@ -88,11 +103,47 @@ else if(trend1h === "Bearish"){
 
     }
 
-    return {
+    let confidence = score;
 
-        signal: signal,
-        confidence: score
+// Strong Trend Bonus
+if(adx >= 35){
 
-    };
+    confidence += 5;
+
+}
+
+// High Volume Bonus
+if(volume >= 1.5){
+
+    confidence += 5;
+
+}
+
+// 1H Trend Confirmation
+if(trend1h === "Bullish" && signal === "BUY"){
+
+    confidence += 5;
+
+}
+else if(trend1h === "Bearish" && signal === "SELL"){
+
+    confidence += 5;
+
+}
+
+// Maximum 100
+if(confidence > 100){
+
+    confidence = 100;
+
+}
+
+return{
+
+    signal,
+
+    confidence
+
+};
 
 }
