@@ -249,7 +249,21 @@ adx
 
 document.getElementById("signal").innerText =
 result.signal;
+let finalSignal = result.signal;
 
+if(result.signal === "BUY" && trend1h === "Bullish"){
+
+    finalSignal = "STRONG BUY";
+
+}
+else if(result.signal === "SELL" && trend1h === "Bearish"){
+
+    finalSignal = "STRONG SELL";
+
+}
+
+document.getElementById("signal").innerText =
+finalSignal;
 document.getElementById("confidence").innerText =
 result.confidence + "%";
 
@@ -323,12 +337,12 @@ risk.rr;
 // Signal Colours
 // =============================
 
-if(result.signal === "BUY"){
+if(finalSignal.includes("BUY")){
 
     document.getElementById("signal").className = "buy";
 
 }
-else if(result.signal === "SELL"){
+else if(finalSignal.includes("SELL")){
 
     document.getElementById("signal").className = "sell";
 
