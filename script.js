@@ -255,7 +255,21 @@ win
 
 }
 scannerResults.sort((a,b)=>b.ai-a.ai);
+
 const bestCoin = scannerResults[0];
+
+document.getElementById("topCoin").innerText =
+bestCoin.coin;
+
+document.getElementById("topSignal").innerText =
+bestCoin.signal;
+
+document.getElementById("topAI").innerText =
+"AI: " + bestCoin.ai;
+
+document.getElementById("topWin").innerText =
+"Win: " + bestCoin.win;
+
 for(const item of scannerResults){
 
     body.insertAdjacentHTML(
