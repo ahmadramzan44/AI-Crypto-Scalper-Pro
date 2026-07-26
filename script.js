@@ -105,6 +105,18 @@ price.toFixed(2);
 const candles =
 await getCandles(symbol,"15m",200);
 
+const candles1h =
+await getCandles(symbol,"1h",200);
+
+const closes1h =
+candles1h.map(c => parseFloat(c[4]));
+
+const ema50_1h =
+getEMA(closes1h,50);
+
+const ema200_1h =
+getEMA(closes1h,200);
+    
 const closes =
 candles.map(c=>parseFloat(c[4]));
 
@@ -252,6 +264,37 @@ ema200
 document.getElementById("trend").innerText =
 trend;
 
+let trend1h = "Sideways";
+
+if(ema50_1h > ema200_1h){
+
+    trend1h = "Bullish";
+
+}
+else if(ema50_1h < ema200_1h){
+
+    trend1h = "Bearish";
+
+}
+
+document.getElementById("trend1h").innerText =
+trend1h;
+
+if(trend1h === "Bullish"){
+
+    document.getElementById("trend1h").className = "buy";
+
+}
+else if(trend1h === "Bearish"){
+
+    document.getElementById("trend1h").className = "sell";
+
+}
+else{
+
+    document.getElementById("trend1h").className = "wait";
+
+}
 const risk =
 calculateRisk(
 price,
