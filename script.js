@@ -275,7 +275,10 @@ for(const item of scannerResults){
     body.insertAdjacentHTML(
     "beforeend",
     `
-    <tr class="${item.coin === bestCoin.coin ? 'bestCoin' : ''}">
+    <tr
+class="${item.coin === bestCoin.coin ? 'bestCoin' : ''}"
+onclick="selectCoin('${item.coin}')"
+style="cursor:pointer">
     <td>${item.coin}</td>
     <td class="${
     item.signal.includes("BUY")
@@ -295,7 +298,13 @@ for(const item of scannerResults){
 }
 
 }
+function selectCoin(symbol){
 
+    document.getElementById("coin").value = symbol;
+
+    analyzeCoin();
+
+}
 function loadChart(symbol){
 
     document.getElementById("tvChart").innerHTML = "";
