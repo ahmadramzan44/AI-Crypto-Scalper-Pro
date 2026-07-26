@@ -686,7 +686,13 @@ if(trend1h === trend){
     aiScore += 10;
 
 }
+    
+// 4H Trend Bonus
+if(trend4h === trend){
 
+    aiScore += 10;
+
+}
 // Pattern Bonus
 if(pattern === "Bullish Engulfing" ||
    pattern === "Bearish Engulfing"){
