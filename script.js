@@ -326,7 +326,7 @@ function sendNotification(title,message){
     }
 
 }
-
+}
 // =============================
 // Load Coin
 // =============================
