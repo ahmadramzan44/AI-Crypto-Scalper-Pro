@@ -898,4 +898,3 @@ function sendNotification(title, message){
     }
 
 }
-}
