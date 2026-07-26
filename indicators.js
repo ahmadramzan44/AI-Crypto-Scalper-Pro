@@ -268,3 +268,43 @@ function calculateSupportResistance(candles){
     };
 
 }
+function detectPattern(candles){
+
+    if(!candles || candles.length < 2){
+
+        return "None";
+
+    }
+
+    const prev = candles[candles.length - 2];
+    const curr = candles[candles.length - 1];
+
+    const prevOpen = parseFloat(prev[1]);
+    const prevClose = parseFloat(prev[4]);
+
+    const currOpen = parseFloat(curr[1]);
+    const currClose = parseFloat(curr[4]);
+
+    // Bullish Engulfing
+    if(
+        prevClose < prevOpen &&
+        currClose > currOpen &&
+        currOpen < prevClose &&
+        currClose > prevOpen
+    ){
+        return "Bullish Engulfing";
+    }
+
+    // Bearish Engulfing
+    if(
+        prevClose > prevOpen &&
+        currClose < currOpen &&
+        currOpen > prevClose &&
+        currClose < prevOpen
+    ){
+        return "Bearish Engulfing";
+    }
+
+    return "None";
+
+}
