@@ -87,7 +87,22 @@ function clearHistory(){
 
     historyBody.innerHTML = "";
 
+    localStorage.removeItem("history");
+
     lastHistorySignal = "";
+
+}
+function loadHistory(){
+
+    const history =
+    localStorage.getItem("history");
+
+    if(history){
+
+        document.getElementById("historyBody").innerHTML =
+        history;
+
+    }
 
 }
 // =============================
