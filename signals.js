@@ -1,39 +1,64 @@
 // ==============================
-// AI Signal Engine
+// AI Signal Engine V2
 // ==============================
 
-function generateSignal(ema9, ema21, ema50, ema200, rsi, macd) {
+function generateSignal(
+    ema9,
+    ema21,
+    ema50,
+    ema200,
+    rsi,
+    macd,
+    volume
+) {
 
     let score = 0;
 
-    // EMA Trend
-    if (ema9 > ema21) score += 20;
-    if (ema21 > ema50) score += 20;
+    // EMA Trend (40 Points)
+
+    if (ema9 > ema21) score += 10;
+    if (ema21 > ema50) score += 10;
     if (ema50 > ema200) score += 20;
 
-    // RSI
-    if (rsi > 50 && rsi < 70) score += 20;
+    // RSI (20 Points)
 
-    // MACD
-    if (macd > 0) score += 20;
-
-    if (score >= 80) {
-        return {
-            signal: "BUY",
-            confidence: score
-        };
+    if (rsi >= 55 && rsi <= 70) {
+        score += 20;
     }
 
-    if (score >= 60) {
-        return {
-            signal: "WAIT",
-            confidence: score
-        };
+    // MACD (20 Points)
+
+    if (macd > 0) {
+        score += 20;
+    }
+
+    // Volume (20 Points)
+
+    if (volume > 0) {
+        score += 20;
+    }
+
+    let signal = "WAIT";
+
+    if (score >= 80) {
+
+        signal = "BUY";
+
+    } else if (score >= 50) {
+
+        signal = "WAIT";
+
+    } else {
+
+        signal = "SELL";
+
     }
 
     return {
-        signal: "SELL",
+
+        signal: signal,
         confidence: score
+
     };
 
 }
