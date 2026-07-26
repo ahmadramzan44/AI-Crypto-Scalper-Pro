@@ -256,37 +256,6 @@ else{
     "wait";
 
 }    
-const result =
-generateSignal(
-ema9,
-ema21,
-ema50,
-ema200,
-rsi,
-macd,
-volume,
-adx
-);
-
-document.getElementById("signal").innerText =
-result.signal;
-let finalSignal = result.signal;
-
-if(result.signal === "BUY" && trend1h === "Bullish"){
-
-    finalSignal = "STRONG BUY";
-
-}
-else if(result.signal === "SELL" && trend1h === "Bearish"){
-
-    finalSignal = "STRONG SELL";
-
-}
-
-document.getElementById("signal").innerText =
-finalSignal;
-document.getElementById("confidence").innerText =
-result.confidence + "%";
 
 const trend =
 getTrend(
@@ -332,6 +301,39 @@ else{
     document.getElementById("trend1h").className = "wait";
 
 }
+const result =
+generateSignal(
+ema9,
+ema21,
+ema50,
+ema200,
+rsi,
+macd,
+volume,
+adx,
+trend1h
+);
+
+document.getElementById("signal").innerText =
+result.signal;
+let finalSignal = result.signal;
+
+if(result.signal === "BUY" && trend1h === "Bullish"){
+
+    finalSignal = "STRONG BUY";
+
+}
+else if(result.signal === "SELL" && trend1h === "Bearish"){
+
+    finalSignal = "STRONG SELL";
+
+}
+
+document.getElementById("signal").innerText =
+finalSignal;
+document.getElementById("confidence").innerText =
+result.confidence + "%";
+
 const risk =
 calculateRisk(
 price,
