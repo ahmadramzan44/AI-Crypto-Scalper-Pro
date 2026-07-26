@@ -162,6 +162,30 @@ calculateVolume(candles);
 const adx =
 calculateADX(candles);
 
+const candles1h =
+await getCandles(coin,"1h",200);
+
+const closes1h =
+candles1h.map(c => parseFloat(c[4]));
+
+const ema50_1h =
+getEMA(closes1h,50);
+
+const ema200_1h =
+getEMA(closes1h,200);
+
+let trend1h = "Sideways";
+
+if(ema50_1h > ema200_1h){
+
+    trend1h = "Bullish";
+
+}
+else if(ema50_1h < ema200_1h){
+
+    trend1h = "Bearish";
+
+}
        const result =
 generateSignal(
 ema9,
@@ -177,6 +201,17 @@ adx
 let signal =
 result.signal;
 
+if(signal === "BUY" && trend1h === "Bullish"){
+
+    signal = "STRONG BUY";
+
+}
+else if(signal === "SELL" && trend1h === "Bearish"){
+
+    signal = "STRONG SELL";
+
+}
+
        const ai =
 result.confidence;
 
@@ -188,7 +223,15 @@ result.confidence;
         `
         <tr>
         <td>${coin}</td>
-        <td>${signal}</td>
+        <td class="${
+signal.includes("BUY")
+? "buy"
+: signal.includes("SELL")
+? "sell"
+: "wait"
+}">
+${signal}
+</td>
         <td>${ai}</td>
         <td>${win}</td>
         </tr>
