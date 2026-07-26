@@ -191,7 +191,8 @@ ema50,
 ema200,
 rsi,
 macd,
-volume
+volume,
+adx
 );
 
 document.getElementById("signal").innerText =
