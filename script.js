@@ -280,7 +280,6 @@ for(const item of scannerResults){
 
 }
 
-}
 function loadChart(symbol){
 
     document.getElementById("tvChart").innerHTML = "";
@@ -885,5 +884,17 @@ function loadChart(symbol){
         container_id: "tvChart"
 
     });
+
+}
+function sendNotification(title, message){
+
+    if(Notification.permission === "granted"){
+
+        new Notification(title, {
+            body: message,
+            icon: "https://cryptologos.cc/logos/bitcoin-btc-logo.png"
+        });
+
+    }
 
 }
