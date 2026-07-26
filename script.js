@@ -190,7 +190,33 @@ volume.toFixed(2);
 
 document.getElementById("adx").innerText =
 adx.toFixed(1);
+if(adx >= 25){
 
+    document.getElementById("trendStrength").innerText =
+    "Strong";
+
+    document.getElementById("trendStrength").className =
+    "buy";
+
+}
+else if(adx >= 20){
+
+    document.getElementById("trendStrength").innerText =
+    "Moderate";
+
+    document.getElementById("trendStrength").className =
+    "wait";
+
+}
+else{
+
+    document.getElementById("trendStrength").innerText =
+    "Weak";
+
+    document.getElementById("trendStrength").className =
+    "sell";
+
+}
 document.getElementById("support").innerText =
 sr.support.toFixed(2);
 
