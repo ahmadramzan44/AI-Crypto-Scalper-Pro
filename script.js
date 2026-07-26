@@ -11,6 +11,8 @@ let autoRefresh = null;
 
 let lastHistorySignal = "";
 
+loadHistory();
+
 // =============================
 // Login
 // =============================
@@ -529,7 +531,10 @@ if(lastHistorySignal !== symbol + finalSignal){
     </tr>
     `
     );
-
+localStorage.setItem(
+"history",
+historyBody.innerHTML
+);
     while(historyBody.rows.length > 20){
 
         historyBody.deleteRow(20);
