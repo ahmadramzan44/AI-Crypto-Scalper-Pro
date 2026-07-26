@@ -73,11 +73,38 @@ function calculateRSI(prices, period = 14){
 
 function calculateMACD(prices){
 
+    if(prices.length < 35){
+
+        return {
+
+            macd:0,
+            signal:0,
+            histogram:0
+
+        };
+
+    }
+
     const ema12 = getEMA(prices,12);
 
     const ema26 = getEMA(prices,26);
 
-    return ema12 - ema26;
+    const macdLine = ema12 - ema26;
+
+    // Temporary Signal Line
+    const signalLine = macdLine * 0.90;
+
+    const histogram = macdLine - signalLine;
+
+    return{
+
+        macd:macdLine,
+
+        signal:signalLine,
+
+        histogram:histogram
+
+    };
 
 }
 // =============================
