@@ -386,3 +386,28 @@ table td{
 color:white;
 
 }
+#historyTable{
+
+    width:100%;
+
+    margin-top:20px;
+
+}
+
+#historyTableContainer{
+
+    width:100%;
+
+    margin-top:30px;
+
+    clear:both;
+
+}
+
+#historyTitle{
+
+    margin-top:30px;
+
+    margin-bottom:15px;
+
+}
