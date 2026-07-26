@@ -79,6 +79,8 @@ function analyzeCoin(){
     document.getElementById("coinName").innerText =
         symbol;
 
+    loadChart(symbol);
+    
     loadCoin(symbol);
 
     if(autoRefresh){
@@ -260,7 +262,40 @@ for(const item of scannerResults){
     `
     );
 
-}    
+}
+function loadChart(symbol){
+
+    document.getElementById("tvChart").innerHTML = "";
+
+    new TradingView.widget({
+
+        "autosize": true,
+
+        "symbol": "BINANCE:" + symbol,
+
+        "interval": "15",
+
+        "timezone": "Etc/UTC",
+
+        "theme": "dark",
+
+        "style": "1",
+
+        "locale": "en",
+
+        "toolbar_bg": "#111",
+
+        "enable_publishing": false,
+
+        "hide_top_toolbar": false,
+
+        "hide_side_toolbar": false,
+
+        "container_id": "tvChart"
+
+    });
+
+}
 }
 // =============================
 // Load Coin
