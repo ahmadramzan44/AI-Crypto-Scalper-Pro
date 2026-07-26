@@ -350,3 +350,39 @@ transform:translateY(0);
 }
 
 }
+table{
+
+width:100%;
+
+border-collapse:collapse;
+
+margin-top:20px;
+
+background:#1d1d1d;
+
+}
+
+table th,
+table td{
+
+padding:10px;
+
+text-align:center;
+
+border:1px solid #333;
+
+}
+
+table th{
+
+background:#111;
+
+color:#00ff99;
+
+}
+
+table td{
+
+color:white;
+
+}
