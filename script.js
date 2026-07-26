@@ -163,7 +163,8 @@ calculateADX(candles);
 
 const sr =
 calculateSupportResistance(candles);
-    
+const pattern =
+detectPattern(candles);    
 document.getElementById("ema9").innerText =
 ema9.toFixed(2);
 
@@ -234,7 +235,27 @@ sr.support.toFixed(2);
 
 document.getElementById("resistance").innerText =
 sr.resistance.toFixed(2);
-    
+document.getElementById("pattern").innerText =
+pattern;
+
+if(pattern === "Bullish Engulfing"){
+
+    document.getElementById("pattern").className =
+    "buy";
+
+}
+else if(pattern === "Bearish Engulfing"){
+
+    document.getElementById("pattern").className =
+    "sell";
+
+}
+else{
+
+    document.getElementById("pattern").className =
+    "wait";
+
+}    
 const result =
 generateSignal(
 ema9,
