@@ -642,6 +642,28 @@ document.getElementById("signal").innerText =
 result.signal;
 let finalSignal = result.signal;
 
+// =============================
+// Multi-Timeframe Confirmation
+// =============================
+
+if(
+    finalSignal === "BUY" &&
+    (trend1h === "Bearish" || trend4h === "Bearish")
+){
+
+    finalSignal = "WAIT";
+
+}
+
+if(
+    finalSignal === "SELL" &&
+    (trend1h === "Bullish" || trend4h === "Bullish")
+){
+
+    finalSignal = "WAIT";
+
+}
+    
 if(result.signal === "BUY" && trend1h === "Bullish"){
 
     finalSignal = "STRONG BUY";
