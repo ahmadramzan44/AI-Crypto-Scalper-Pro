@@ -107,10 +107,19 @@ await getCandles(symbol,"15m",200);
 
 const candles1h =
 await getCandles(symbol,"1h",200);
+const candles4h =
+await getCandles(symbol,"4h",200);
 console.log("1H Candles:", candles1h);
 const closes1h =
 candles1h.map(c => parseFloat(c[4]));
+const closes4h =
+candles4h.map(c => parseFloat(c[4]));
 
+const ema50_4h =
+getEMA(closes4h,50);
+
+const ema200_4h =
+getEMA(closes4h,200);
 const ema50_1h =
 getEMA(closes1h,50);
 
@@ -299,6 +308,37 @@ else if(trend1h === "Bearish"){
 else{
 
     document.getElementById("trend1h").className = "wait";
+
+}
+let trend4h = "Sideways";
+
+if(ema50_4h > ema200_4h){
+
+    trend4h = "Bullish";
+
+}
+else if(ema50_4h < ema200_4h){
+
+    trend4h = "Bearish";
+
+}
+
+document.getElementById("trend4h").innerText =
+trend4h;
+
+if(trend4h === "Bullish"){
+
+    document.getElementById("trend4h").className = "buy";
+
+}
+else if(trend4h === "Bearish"){
+
+    document.getElementById("trend4h").className = "sell";
+
+}
+else{
+
+    document.getElementById("trend4h").className = "wait";
 
 }
 const result =
