@@ -143,6 +143,9 @@ calculateATR(candles);
 const volume =
 calculateVolume(candles);
 
+const adx =
+calculateADX(candles);
+
 document.getElementById("ema9").innerText =
 ema9.toFixed(2);
 
@@ -178,7 +181,8 @@ else{
 }
 document.getElementById("volume").innerText =
 volume.toFixed(2);
-
+document.getElementById("adx").innerText =
+adx.toFixed(1);
 const result =
 generateSignal(
 ema9,
