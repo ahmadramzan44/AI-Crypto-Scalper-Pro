@@ -412,6 +412,52 @@ else{
     "sell";
 
 }
+let winProbability = aiScore;
+
+// Strong Signal Bonus
+if(
+    finalSignal === "STRONG BUY" ||
+    finalSignal === "STRONG SELL"
+){
+
+    winProbability += 5;
+
+}
+
+// Safe Trade Bonus
+if(tradeStatus === "SAFE"){
+
+    winProbability += 5;
+
+}
+
+// Limit to 100
+if(winProbability > 100){
+
+    winProbability = 100;
+
+}
+
+document.getElementById("winProbability").innerText =
+winProbability + "%";
+if(winProbability >= 90){
+
+    document.getElementById("winProbability").className =
+    "buy";
+
+}
+else if(winProbability >= 70){
+
+    document.getElementById("winProbability").className =
+    "wait";
+
+}
+else{
+
+    document.getElementById("winProbability").className =
+    "sell";
+
+}
 const risk =
 calculateRisk(
 price,
