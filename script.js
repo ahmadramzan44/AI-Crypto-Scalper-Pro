@@ -10,8 +10,22 @@ const PASSWORD = "1234";
 let autoRefresh = null;
 
 let lastHistorySignal = "";
+const scannerCoins = [
 
+"BTCUSDT",
+"ETHUSDT",
+"BNBUSDT",
+"SOLUSDT",
+"XRPUSDT",
+"DOGEUSDT",
+"ADAUSDT",
+"LINKUSDT",
+"AVAXUSDT",
+"SUIUSDT"
+
+];
 loadHistory();
+runScanner();
 
 // =============================
 // Login
@@ -101,6 +115,30 @@ function loadHistory(){
 
         document.getElementById("historyBody").innerHTML =
         history;
+
+    }
+
+}
+async function runScanner(){
+
+    const body =
+    document.getElementById("scannerBody");
+
+    body.innerHTML = "";
+
+    for(const coin of scannerCoins){
+
+        body.insertAdjacentHTML(
+        "beforeend",
+        `
+        <tr>
+        <td>${coin}</td>
+        <td>Scanning...</td>
+        <td>--</td>
+        <td>--</td>
+        </tr>
+        `
+        );
 
     }
 
