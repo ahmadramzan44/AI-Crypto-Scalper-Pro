@@ -9,6 +9,8 @@ const PASSWORD = "1234";
 
 let autoRefresh = null;
 
+let scannerRefresh = null;
+
 let lastHistorySignal = "";
 const scannerCoins = [
 
@@ -94,7 +96,17 @@ function analyzeCoin(){
         loadCoin(symbol);
 
     },5000);
+if(scannerRefresh){
 
+    clearInterval(scannerRefresh);
+
+}
+
+scannerRefresh = setInterval(function(){
+
+    runScanner();
+
+},30000);
 }
 function clearHistory(){
 
