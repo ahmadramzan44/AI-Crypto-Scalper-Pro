@@ -28,7 +28,11 @@ const scannerCoins = [
 ];
 loadHistory();
 runScanner();
+if(Notification.permission !== "granted"){
 
+    Notification.requestPermission();
+
+}
 // =============================
 // Login
 // =============================
@@ -306,6 +310,20 @@ function loadChart(symbol){
         "container_id": "tvChart"
 
     });
+
+}
+function sendNotification(title,message){
+
+    if(Notification.permission === "granted"){
+
+        new Notification(title,{
+
+            body: message,
+            icon: "https://cryptologos.cc/logos/bitcoin-btc-logo.png"
+
+        });
+
+    }
 
 }
 }
@@ -600,7 +618,28 @@ else if(result.signal === "SELL" && trend1h === "Bearish"){
     finalSignal = "STRONG SELL";
 
 }
+if(finalSignal === "STRONG BUY"){
 
+    sendNotification(
+
+        "🚀 STRONG BUY",
+
+        symbol + " is giving a STRONG BUY signal."
+
+    );
+
+}
+else if(finalSignal === "STRONG SELL"){
+
+    sendNotification(
+
+        "🔻 STRONG SELL",
+
+        symbol + " is giving a STRONG SELL signal."
+
+    );
+
+}
 document.getElementById("signal").innerText =
 finalSignal;
 document.getElementById("confidence").innerText =
