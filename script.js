@@ -129,8 +129,11 @@ getEMA(closes,200);
 const rsi =
 calculateRSI(closes);
 
-const macd =
+const macdData =
 calculateMACD(closes);
+
+const macd =
+macdData.macd;
 
 const atr =
 calculateATR(candles);
