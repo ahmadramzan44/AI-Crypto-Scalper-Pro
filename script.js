@@ -148,9 +148,6 @@ calculateADX(candles);
 
 const sr =
 calculateSupportResistance(candles);
-
-const sr =
-calculateSupportResistance(candles);
     
 document.getElementById("ema9").innerText =
 ema9.toFixed(2);
