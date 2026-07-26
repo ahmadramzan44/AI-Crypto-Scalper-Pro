@@ -411,3 +411,37 @@ color:white;
     margin-bottom:15px;
 
 }
+#scannerTable{
+
+width:100%;
+
+margin-top:20px;
+
+border-collapse:collapse;
+
+}
+
+#scannerTable th,
+#scannerTable td{
+
+padding:10px;
+
+text-align:center;
+
+border:1px solid #333;
+
+}
+
+#scannerTable th{
+
+background:#111;
+
+color:#00ff99;
+
+}
+
+#scannerTable td{
+
+color:white;
+
+}
