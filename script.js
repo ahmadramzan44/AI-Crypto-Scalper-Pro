@@ -12,6 +12,7 @@ let autoRefresh = null;
 let scannerRefresh = null;
 
 let lastHistorySignal = "";
+let lastSignalTime = 0;
 const scannerCoins = [
 
 "BTCUSDT",
@@ -302,7 +303,13 @@ onclick="selectCoin('${item.coin}')"
 style="cursor:pointer;">
 onclick="selectCoin('${item.coin}')"
 style="cursor:pointer">
-    <td>${item.coin}</td>
+    <td
+style="cursor:pointer;color:#00e5ff;font-weight:bold;"
+onclick="selectCoin('${item.coin}')">
+
+${item.coin}
+
+</td>
     <td class="${
     item.signal.includes("BUY")
     ? "buy"
@@ -993,9 +1000,17 @@ pattern === "Bearish Engulfing"
 document.getElementById("signalReason").innerHTML =
 reason;
     
-if(lastHistorySignal !== symbol + finalSignal){
+if(
+
+lastHistorySignal !== symbol + finalSignal &&
+
+Date.now() - lastSignalTime > 300000
+
+){
 
     lastHistorySignal = symbol + finalSignal;
+
+    lastSignalTime = Date.now();
 
     const historyBody =
     document.getElementById("historyBody");
@@ -1143,5 +1158,13 @@ function sendNotification(title, message){
         });
 
     }
+
+}
+
+function selectCoin(symbol){
+
+    document.getElementById("coin").value = symbol;
+
+    analyzeCoin();
 
 }
