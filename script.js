@@ -275,8 +275,10 @@ for(const item of scannerResults){
     body.insertAdjacentHTML(
     "beforeend",
     `
-    <tr
+<tr
 class="${item.coin === bestCoin.coin ? 'bestCoin' : ''}"
+onclick="selectCoin('${item.coin}')"
+style="cursor:pointer;">
 onclick="selectCoin('${item.coin}')"
 style="cursor:pointer">
     <td>${item.coin}</td>
@@ -296,6 +298,13 @@ style="cursor:pointer">
     );
 
 }
+
+}
+function selectCoin(symbol){
+
+    document.getElementById("coin").value = symbol;
+
+    analyzeCoin();
 
 }
 function selectCoin(symbol){
