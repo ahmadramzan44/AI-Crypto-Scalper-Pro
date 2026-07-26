@@ -326,21 +326,7 @@ function sendNotification(title,message){
     }
 
 }
-function sendNotification(title,message){
 
-    if(Notification.permission === "granted"){
-
-        new Notification(title,{
-
-            body: message,
-            icon: "https://cryptologos.cc/logos/bitcoin-btc-logo.png"
-
-        });
-
-    }
-
-}
-}
 // =============================
 // Load Coin
 // =============================
