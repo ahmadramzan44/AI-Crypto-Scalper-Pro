@@ -918,6 +918,35 @@ else{
     "sell";
 
 }
+
+// =============================
+// Trade Checklist
+// =============================
+
+// Trend
+document.getElementById("checkTrend").innerText =
+(trend1h === trend4h ? "✅ Trend" : "❌ Trend");
+
+// RSI
+document.getElementById("checkRSI").innerText =
+(rsi >= 40 && rsi <= 60 ? "⚠️ RSI" : "✅ RSI");
+
+// ADX
+document.getElementById("checkADX").innerText =
+(adx >= 25 ? "✅ ADX" : "❌ ADX");
+
+// Volume
+document.getElementById("checkVolume").innerText =
+(volume > 1 ? "✅ Volume" : "❌ Volume");
+
+// Pattern
+document.getElementById("checkPattern").innerText =
+(
+pattern === "Bullish Engulfing" ||
+pattern === "Bearish Engulfing"
+? "✅ Pattern"
+: "❌ Pattern"
+);
     
 if(lastHistorySignal !== symbol + finalSignal){
 
