@@ -1,235 +1,352 @@
-/* ===========================
+/* =====================================
    AI Crypto Scalper Pro
-   style.css - Part 1
-=========================== */
+   Version 1.0
+===================================== */
 
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial,Helvetica,sans-serif;
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,Helvetica,sans-serif;
 }
 
 body{
-    background:#0f172a;
-    color:#ffffff;
-    min-height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:flex-start;
-    padding:20px;
+
+background:#0f172a;
+color:#ffffff;
+min-height:100vh;
+padding:20px;
+
 }
 
 .container{
-    width:100%;
-    max-width:1200px;
+
+width:100%;
+max-width:1400px;
+margin:auto;
+
 }
 
-/* Login */
+/* LOGIN */
 
 #login{
-    width:100%;
-    max-width:420px;
-    margin:60px auto;
-    background:#1e293b;
-    padding:30px;
-    border-radius:16px;
-    box-shadow:0 0 20px rgba(0,255,170,.15);
+
+width:100%;
+max-width:420px;
+
+margin:50px auto;
+
+background:#1e293b;
+
+padding:30px;
+
+border-radius:18px;
+
+box-shadow:0 0 25px rgba(0,255,150,.15);
+
 }
 
 #login h1{
-    text-align:center;
-    color:#22c55e;
-    margin-bottom:10px;
+
+text-align:center;
+
+color:#22c55e;
+
+margin-bottom:10px;
+
 }
 
 #login p{
-    text-align:center;
-    color:#cbd5e1;
-    margin-bottom:25px;
+
+text-align:center;
+
+color:#cbd5e1;
+
+margin-bottom:25px;
+
 }
 
 input{
-    width:100%;
-    padding:14px;
-    margin-top:12px;
-    border:none;
-    border-radius:10px;
-    background:#334155;
-    color:#fff;
-    font-size:15px;
-    outline:none;
+
+width:100%;
+
+padding:14px;
+
+margin-top:12px;
+
+border:none;
+
+border-radius:10px;
+
+background:#334155;
+
+color:white;
+
+font-size:15px;
+
+outline:none;
+
 }
 
 input:focus{
-    border:1px solid #22c55e;
+
+border:1px solid #22c55e;
+
 }
 
 button{
-    width:100%;
-    margin-top:18px;
-    padding:14px;
-    border:none;
-    border-radius:10px;
-    background:#22c55e;
-    color:white;
-    font-size:16px;
-    font-weight:bold;
-    cursor:pointer;
-    transition:.3s;
+
+width:100%;
+
+padding:14px;
+
+margin-top:18px;
+
+background:#22c55e;
+
+color:white;
+
+font-size:16px;
+
+font-weight:bold;
+
+border:none;
+
+border-radius:10px;
+
+cursor:pointer;
+
+transition:.3s;
+
 }
 
 button:hover{
-    background:#16a34a;
+
+background:#16a34a;
+
 }
 
-/* Dashboard */
+/* DASHBOARD */
 
 #dashboard{
-    display:none;
+
+display:none;
+
 }
 
 #dashboard h1{
-    text-align:center;
-    color:#22c55e;
-    margin-bottom:20px;
+
+text-align:center;
+
+margin-bottom:25px;
+
+color:#22c55e;
+
 }
 
 .grid{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:16px;
+
+display:grid;
+
+grid-template-columns:repeat(4,1fr);
+
+gap:18px;
+
 }
 
 .card{
-    background:#1e293b;
-    border-radius:14px;
-    padding:18px;
-    box-shadow:0 0 12px rgba(255,255,255,.05);
-    transition:.3s;
+
+background:#1e293b;
+
+padding:18px;
+
+border-radius:15px;
+
+box-shadow:0 0 15px rgba(255,255,255,.05);
+
+transition:.3s;
+
 }
 
 .card:hover{
-    transform:translateY(-3px);
+
+transform:translateY(-3px);
+
 }
 
 .card h3{
-    color:#94a3b8;
-    font-size:14px;
-    margin-bottom:10px;
+
+color:#94a3b8;
+
+margin-bottom:10px;
+
+font-size:14px;
+
 }
 
 .card h2{
-    color:#ffffff;
-    font-size:22px;
+
+font-size:22px;
+
+font-weight:bold;
+
 }
-/* ===========================
-   Responsive Layout
-=========================== */
+/* =====================================
+   Responsive Design
+===================================== */
 
-@media (max-width:1100px){
+@media (max-width:1200px){
 
-    .grid{
-        grid-template-columns:repeat(3,1fr);
-    }
+.grid{
+
+grid-template-columns:repeat(3,1fr);
+
+}
 
 }
 
 @media (max-width:768px){
 
-    .grid{
-        grid-template-columns:repeat(2,1fr);
-    }
+.grid{
 
-    #login{
-        margin:30px auto;
-        padding:20px;
-    }
+grid-template-columns:repeat(2,1fr);
+
+}
+
+.container{
+
+padding:10px;
+
+}
+
+#login{
+
+margin:20px auto;
+
+padding:20px;
+
+}
 
 }
 
 @media (max-width:480px){
 
-    .grid{
-        grid-template-columns:1fr;
-    }
+.grid{
 
-    body{
-        padding:10px;
-    }
-
-    .card h2{
-        font-size:20px;
-    }
+grid-template-columns:1fr;
 
 }
 
-/* ===========================
+.card h2{
+
+font-size:20px;
+
+}
+
+button{
+
+font-size:15px;
+
+}
+
+}
+
+/* =====================================
    Signal Colours
-=========================== */
+===================================== */
 
 .buy{
-    color:#22c55e !important;
-    font-weight:bold;
+
+color:#22c55e !important;
+
+font-weight:bold;
+
 }
 
 .sell{
-    color:#ef4444 !important;
-    font-weight:bold;
+
+color:#ef4444 !important;
+
+font-weight:bold;
+
 }
 
 .wait{
-    color:#f59e0b !important;
-    font-weight:bold;
+
+color:#f59e0b !important;
+
+font-weight:bold;
+
 }
 
-.bullish{
-    color:#22c55e !important;
+.bull{
+
+color:#22c55e !important;
+
 }
 
-.bearish{
-    color:#ef4444 !important;
+.bear{
+
+color:#ef4444 !important;
+
 }
 
-.sideways{
-    color:#f59e0b !important;
+.side{
+
+color:#f59e0b !important;
+
 }
 
-/* ===========================
+/* =====================================
    Scrollbar
-=========================== */
+===================================== */
 
 ::-webkit-scrollbar{
-    width:8px;
+
+width:8px;
+
 }
 
 ::-webkit-scrollbar-track{
-    background:#0f172a;
+
+background:#0f172a;
+
 }
 
 ::-webkit-scrollbar-thumb{
-    background:#22c55e;
-    border-radius:10px;
+
+background:#22c55e;
+
+border-radius:20px;
+
 }
 
-/* ===========================
+/* =====================================
    Animation
-=========================== */
+===================================== */
 
 .card{
-    animation:fadeIn .4s ease;
+
+animation:fade .35s ease;
+
 }
 
-@keyframes fadeIn{
+@keyframes fade{
 
-    from{
-        opacity:0;
-        transform:translateY(10px);
-    }
+from{
 
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
+opacity:0;
+
+transform:translateY(8px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
 
 }
