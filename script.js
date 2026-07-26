@@ -102,19 +102,6 @@ parseFloat(ticker.price);
 document.getElementById("price").innerText =
 price.toFixed(2);
 
-document.getElementById("entry").innerText =
-price.toFixed(2);
-
-const entryLow = (price - (atr * 0.20)).toFixed(2);
-
-const entryHigh = (price + (atr * 0.20)).toFixed(2);
-
-document.getElementById("entryZone").innerText =
-entryLow + " - " + entryHigh;
-    
-document.getElementById("update").innerText =
-new Date().toLocaleTimeString();
-
 const candles =
 await getCandles(symbol,"15m",200);
 
@@ -147,9 +134,11 @@ macdData.macd;
 const atr =
 calculateATR(candles);
 
-const entryLow = (price - (atr * 0.20)).toFixed(2);
+const entryLow =
+(price - (atr * 0.20)).toFixed(2);
 
-const entryHigh = (price + (atr * 0.20)).toFixed(2);
+const entryHigh =
+(price + (atr * 0.20)).toFixed(2);
 
 document.getElementById("entryZone").innerText =
 entryLow + " - " + entryHigh;
@@ -301,7 +290,7 @@ else{
 
 }
 
-
+}
 catch(error){
 
     console.error(error);
@@ -310,3 +299,4 @@ catch(error){
 
 }
 
+}
