@@ -301,14 +301,12 @@ else{
 
 }
 
-}
 
 catch(error){
 
     console.error(error);
 
-    alert("Unable to load market data.");
+    alert(error);
 
 }
 
-}
