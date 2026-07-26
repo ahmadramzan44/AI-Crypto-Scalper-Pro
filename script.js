@@ -107,7 +107,7 @@ await getCandles(symbol,"15m",200);
 
 const candles1h =
 await getCandles(symbol,"1h",200);
-
+console.log("1H Candles:", candles1h);
 const closes1h =
 candles1h.map(c => parseFloat(c[4]));
 
@@ -276,7 +276,9 @@ else if(ema50_1h < ema200_1h){
     trend1h = "Bearish";
 
 }
-
+console.log("EMA50 1H:", ema50_1h);
+console.log("EMA200 1H:", ema200_1h);
+console.log("Trend1H:", trend1h);
 document.getElementById("trend1h").innerText =
 trend1h;
 
