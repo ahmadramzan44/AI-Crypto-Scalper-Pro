@@ -141,7 +141,8 @@ async function runScanner(){
 
     const body =
     document.getElementById("scannerBody");
-
+const filter =
+document.getElementById("scannerFilter").value;
     body.innerHTML = "";
    
     const scannerResults = [];
@@ -272,6 +273,26 @@ document.getElementById("topWin").innerText =
 
 for(const item of scannerResults){
 
+    if(filter === "BUY" &&
+!item.signal.includes("BUY")){
+
+    continue;
+
+}
+
+if(filter === "SELL" &&
+!item.signal.includes("SELL")){
+
+    continue;
+
+}
+
+if(filter === "STRONG" &&
+!item.signal.includes("STRONG")){
+
+    continue;
+
+}
     body.insertAdjacentHTML(
     "beforeend",
     `
