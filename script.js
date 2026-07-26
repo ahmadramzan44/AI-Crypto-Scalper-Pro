@@ -78,7 +78,16 @@ function analyzeCoin(){
     },5000);
 
 }
+function clearHistory(){
 
+    const historyBody =
+    document.getElementById("historyBody");
+
+    historyBody.innerHTML = "";
+
+    lastHistorySignal = "";
+
+}
 // =============================
 // Load Coin
 // =============================
