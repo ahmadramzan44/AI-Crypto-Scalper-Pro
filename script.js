@@ -1,259 +1,274 @@
-// ==============================
+// =====================================
 // AI Crypto Scalper Pro
-// script.js (Part 1)
-// ==============================
+// script.js
+// Version 1.0
+// =====================================
 
 const USERNAME = "admin";
 const PASSWORD = "1234";
 
 let autoRefresh = null;
 
-// ----------------------
+// =============================
 // Login
-// ----------------------
+// =============================
 
-function login() {
+function login(){
 
-    const username = document.getElementById("username").value.trim();
-    const password = document.getElementById("password").value.trim();
+    const username =
+        document.getElementById("user").value.trim();
 
-    if (username !== USERNAME || password !== PASSWORD) {
+    const password =
+        document.getElementById("pass").value.trim();
+
+    if(
+        username !== USERNAME ||
+        password !== PASSWORD
+    ){
 
         alert("Wrong Username or Password");
+
         return;
 
     }
 
-    document.getElementById("loginPage").style.display = "none";
+    document.getElementById("login").style.display = "none";
+
     document.getElementById("dashboard").style.display = "block";
 
 }
 
-// ----------------------
-// Analyze
-// ----------------------
+// =============================
+// Analyze Coin
+// =============================
 
-function analyzeCoin() {
+function analyzeCoin(){
 
-    const coin = document
-        .getElementById("coin")
+    const symbol =
+        document.getElementById("coin")
         .value
-        .toUpperCase()
-        .trim();
+        .trim()
+        .toUpperCase();
 
-    if (coin === "") {
+    if(symbol===""){
 
-        alert("Enter Coin Name");
+        alert("Enter Coin Symbol");
+
         return;
 
     }
 
-    document.getElementById("coinName").innerText = coin;
+    document.getElementById("coinName").innerText =
+        symbol;
 
-    loadCoin(coin);
+    loadCoin(symbol);
 
-    if (autoRefresh) {
+    if(autoRefresh){
 
         clearInterval(autoRefresh);
 
     }
 
-    autoRefresh = setInterval(() => {
+    autoRefresh = setInterval(function(){
 
-        loadCoin(coin);
+        loadCoin(symbol);
 
-    }, 5000);
+    },5000);
 
 }
 
-// ----------------------
+// =============================
 // Load Coin
-// ----------------------
+// =============================
 
-async function loadCoin(symbol) {
+async function loadCoin(symbol){
 
-    try {
+try{
 
-        const ticker = await getCurrentPrice(symbol);
+const ticker =
+await getCurrentPrice(symbol);
 
-        if (!ticker || ticker.code) {
+if(!ticker || ticker.code){
 
-            alert("Invalid Symbol");
-            return;
+alert("Invalid Coin");
 
-        }
-
-        const price = parseFloat(ticker.price);
-
-        document.getElementById("price").innerText =
-            price.toFixed(2);
-
-        document.getElementById("entry").innerText =
-            price.toFixed(2);
-
-        document.getElementById("update").innerText =
-            new Date().toLocaleTimeString();
-
-        const candles = await getCandles(symbol, "15m", 200);
-        const atr = calculateATR(candles);
-        const closes = candles.map(c =>
-            parseFloat(c[4])
-        );
-
-        const ema9 = getEMA(closes, 9);
-        const ema21 = getEMA(closes, 21);
-        const ema50 = getEMA(closes, 50);
-        const ema200 = getEMA(closes, 200);
-
-        const rsi = calculateRSI(closes);
-
-        const macd = calculateMACD(closes);
-
-        document.getElementById("ema9").innerText =
-            ema9.toFixed(2);
-
-        document.getElementById("ema21").innerText =
-            ema21.toFixed(2);
-
-        document.getElementById("ema50").innerText =
-            ema50.toFixed(2);
-
-        document.getElementById("ema200").innerText =
-            ema200.toFixed(2);
-
-        document.getElementById("rsi").innerText =
-            rsi.toFixed(2);
-
-        if (macd > 0) {
-
-            document.getElementById("macd").innerText =
-                "Bullish";
-
-            document.getElementById("macd").style.color =
-                "lime";
-
-        } else {
-
-            document.getElementById("macd").innerText =
-                "Bearish";
-
-            document.getElementById("macd").style.color =
-                "red";
-
-        }
-
-        // PART 2 continues...
-
-    }
-
-    catch (error) {
-
-        console.log(error);
-
-        alert("Unable to load market data.");
-
-    }
+return;
 
 }
-        // ----------------------
-        // Signal Engine
-        // ----------------------
 
-        const result = generateSignal(
-            ema9,
-            ema21,
-            ema50,
-            ema200,
-            rsi,
-            macd
-        );
-const risk = calculateRisk(
-    price,
-    atr,
-    result.signal
+const price =
+parseFloat(ticker.price);
+
+document.getElementById("price").innerText =
+price.toFixed(2);
+
+document.getElementById("entry").innerText =
+price.toFixed(2);
+
+document.getElementById("update").innerText =
+new Date().toLocaleTimeString();
+
+const candles =
+await getCandles(symbol,"15m",200);
+
+const closes =
+candles.map(c=>parseFloat(c[4]));
+
+const ema9 =
+getEMA(closes,9);
+
+const ema21 =
+getEMA(closes,21);
+
+const ema50 =
+getEMA(closes,50);
+
+const ema200 =
+getEMA(closes,200);
+
+const rsi =
+calculateRSI(closes);
+
+const macd =
+calculateMACD(closes);
+
+const atr =
+calculateATR(candles);
+
+const volume =
+calculateVolume(candles);
+
+document.getElementById("ema9").innerText =
+ema9.toFixed(2);
+
+document.getElementById("ema21").innerText =
+ema21.toFixed(2);
+
+document.getElementById("ema50").innerText =
+ema50.toFixed(2);
+
+document.getElementById("ema200").innerText =
+ema200.toFixed(2);
+
+document.getElementById("rsi").innerText =
+rsi.toFixed(2);
+
+if(macd > 0){
+
+document.getElementById("macd").innerText =
+"Bullish";
+
+document.getElementById("macd").className =
+"buy";
+
+}
+else{
+
+document.getElementById("macd").innerText =
+"Bearish";
+
+document.getElementById("macd").className =
+"sell";
+
+}
+
+document.getElementById("volume").innerText =
+volume.toFixed(2);
+
+const result =
+generateSignal(
+ema9,
+ema21,
+ema50,
+ema200,
+rsi,
+macd,
+volume
+);
+
+document.getElementById("signal").innerText =
+result.signal;
+
+document.getElementById("confidence").innerText =
+result.confidence + "%";
+
+const trend =
+getTrend(
+ema9,
+ema21,
+ema50,
+ema200
+);
+
+document.getElementById("trend").innerText =
+trend;
+
+const risk =
+calculateRisk(
+price,
+atr,
+result.signal
 );
 
 document.getElementById("sl").innerText =
-    risk.stopLoss;
+risk.stopLoss;
 
 document.getElementById("tp1").innerText =
-    risk.tp1;
+risk.tp1;
 
 document.getElementById("tp2").innerText =
-    risk.tp2;
+risk.tp2;
 
 document.getElementById("tp3").innerText =
-    risk.tp3;
+risk.tp3;
 
 document.getElementById("rr").innerText =
-    risk.rr;
-        document.getElementById("signal").innerText =
-            result.signal;
+risk.rr;
 
-        document.getElementById("confidence").innerText =
-            result.confidence + "%";
+// =============================
+// Signal Colours
+// =============================
 
-        if (result.signal === "BUY") {
+if(result.signal === "BUY"){
 
-            document.getElementById("signal").style.color = "lime";
-            document.getElementById("trend").innerText = "Bullish";
-            document.getElementById("trend").style.color = "lime";
+    document.getElementById("signal").className = "buy";
 
-            const sl = price * 0.995;
+}
+else if(result.signal === "SELL"){
 
-            document.getElementById("sl").innerText =
-                sl.toFixed(2);
+    document.getElementById("signal").className = "sell";
 
-            document.getElementById("tp1").innerText =
-                (price + (price - sl)).toFixed(2);
+}
+else{
 
-            document.getElementById("tp2").innerText =
-                (price + ((price - sl) * 2)).toFixed(2);
+    document.getElementById("signal").className = "wait";
 
-            document.getElementById("tp3").innerText =
-                (price + ((price - sl) * 3)).toFixed(2);
+}
 
-        }
+if(trend === "Bullish"){
 
-        else if (result.signal === "SELL") {
+    document.getElementById("trend").className = "buy";
 
-            document.getElementById("signal").style.color = "red";
-            document.getElementById("trend").innerText = "Bearish";
-            document.getElementById("trend").style.color = "red";
+}
+else if(trend === "Bearish"){
 
-            const sl = price * 1.005;
+    document.getElementById("trend").className = "sell";
 
-            document.getElementById("sl").innerText =
-                sl.toFixed(2);
+}
+else{
 
-            document.getElementById("tp1").innerText =
-                (price - (sl - price)).toFixed(2);
+    document.getElementById("trend").className = "wait";
 
-            document.getElementById("tp2").innerText =
-                (price - ((sl - price) * 2)).toFixed(2);
+}
 
-            document.getElementById("tp3").innerText =
-                (price - ((sl - price) * 3)).toFixed(2);
+}
 
-        }
+catch(error){
 
-        else {
+    console.error(error);
 
-            document.getElementById("signal").style.color =
-                "orange";
+    alert("Unable to load market data.");
 
-            document.getElementById("trend").innerText =
-                "Sideways";
+}
 
-            document.getElementById("trend").style.color =
-                "orange";
-
-            document.getElementById("sl").innerText = "--";
-            document.getElementById("tp1").innerText = "--";
-            document.getElementById("tp2").innerText = "--";
-            document.getElementById("tp3").innerText = "--";
-
-        }
-
-        document.getElementById("rr").innerText =
-            "1 : 3";
+}
