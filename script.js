@@ -947,6 +947,30 @@ pattern === "Bearish Engulfing"
 ? "✅ Pattern"
 : "❌ Pattern"
 );
+
+let reason = "";
+
+reason += ema9 > ema21
+? "✅ EMA Bullish Cross<br>"
+: "❌ EMA Bearish Cross<br>";
+
+reason += rsi >= 45 && rsi <= 70
+? "✅ RSI Healthy<br>"
+: "❌ RSI Weak<br>";
+
+reason += adx >= 25
+? "✅ Strong Trend<br>"
+: "❌ Weak Trend<br>";
+
+reason += (
+pattern === "Bullish Engulfing" ||
+pattern === "Bearish Engulfing"
+)
+? "✅ Pattern Confirmed"
+: "❌ No Strong Pattern";
+
+document.getElementById("signalReason").innerHTML =
+reason;
     
 if(lastHistorySignal !== symbol + finalSignal){
 
