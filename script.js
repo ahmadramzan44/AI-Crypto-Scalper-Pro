@@ -146,6 +146,9 @@ calculateVolume(candles);
 const adx =
 calculateADX(candles);
 
+const sr =
+calculateSupportResistance(candles);
+    
 document.getElementById("ema9").innerText =
 ema9.toFixed(2);
 
@@ -181,8 +184,16 @@ else{
 }
 document.getElementById("volume").innerText =
 volume.toFixed(2);
+
 document.getElementById("adx").innerText =
 adx.toFixed(1);
+
+document.getElementById("support").innerText =
+sr.support.toFixed(2);
+
+document.getElementById("resistance").innerText =
+sr.resistance.toFixed(2);
+
 const result =
 generateSignal(
 ema9,
