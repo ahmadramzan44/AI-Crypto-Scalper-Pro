@@ -156,25 +156,24 @@ ema200.toFixed(2);
 document.getElementById("rsi").innerText =
 rsi.toFixed(2);
 
-if(macd > 0){
+if(macdData.histogram > 0){
 
-document.getElementById("macd").innerText =
-"Bullish";
+    document.getElementById("macd").innerText =
+        "Bullish (" + macd.toFixed(3) + ")";
 
-document.getElementById("macd").className =
-"buy";
+    document.getElementById("macd").className =
+        "buy";
 
 }
 else{
 
-document.getElementById("macd").innerText =
-"Bearish";
+    document.getElementById("macd").innerText =
+        "Bearish (" + macd.toFixed(3) + ")";
 
-document.getElementById("macd").className =
-"sell";
+    document.getElementById("macd").className =
+        "sell";
 
 }
-
 document.getElementById("volume").innerText =
 volume.toFixed(2);
 
