@@ -223,12 +223,6 @@ sr.support.toFixed(2);
 document.getElementById("resistance").innerText =
 sr.resistance.toFixed(2);
     
-document.getElementById("support").innerText =
-sr.support.toFixed(2);
-
-document.getElementById("resistance").innerText =
-sr.resistance.toFixed(2);
-
 const result =
 generateSignal(
 ema9,
