@@ -255,13 +255,13 @@ win
 
 }
 scannerResults.sort((a,b)=>b.ai-a.ai);
-
+const bestCoin = scannerResults[0];
 for(const item of scannerResults){
 
     body.insertAdjacentHTML(
     "beforeend",
     `
-    <tr>
+    <tr class="${item.coin === bestCoin.coin ? 'bestCoin' : ''}">
     <td>${item.coin}</td>
     <td class="${
     item.signal.includes("BUY")
