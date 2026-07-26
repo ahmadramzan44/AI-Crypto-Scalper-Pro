@@ -184,3 +184,40 @@ function getTrend(ema9, ema21, ema50, ema200){
     return "Sideways";
 
 }
+// =============================
+// ADX (Trend Strength)
+// =============================
+
+function calculateADX(candles, period = 14){
+
+    if(!candles || candles.length < period + 1){
+
+        return 0;
+
+    }
+
+    let total = 0;
+
+    for(let i = candles.length - period; i < candles.length; i++){
+
+        const high = parseFloat(candles[i][2]);
+
+        const low = parseFloat(candles[i][3]);
+
+        total += (high - low);
+
+    }
+
+    const atr = calculateATR(candles, period);
+
+    if(atr === 0){
+
+        return 0;
+
+    }
+
+    const adx = (total / period) / atr * 10;
+
+    return Math.min(50, adx);
+
+}
