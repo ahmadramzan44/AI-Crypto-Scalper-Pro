@@ -1,49 +1,65 @@
-// ==============================
+// =====================================
+// AI Crypto Scalper Pro
 // Risk Management
-// ==============================
+// Version 1.0
+// =====================================
 
-function calculateRisk(price, atr, signal) {
+function calculateRisk(price, atr, signal){
 
     let stopLoss;
     let tp1;
     let tp2;
     let tp3;
 
-    if (signal === "BUY") {
+    if(signal === "BUY"){
 
-        stopLoss = price - atr;
+        stopLoss = price - (atr * 1.5);
 
-        tp1 = price + (atr * 1);
-        tp2 = price + (atr * 2);
-        tp3 = price + (atr * 3);
+        tp1 = price + (atr * 1.5);
 
-    } else if (signal === "SELL") {
+        tp2 = price + (atr * 3);
 
-        stopLoss = price + atr;
+        tp3 = price + (atr * 4.5);
 
-        tp1 = price - (atr * 1);
-        tp2 = price - (atr * 2);
-        tp3 = price - (atr * 3);
+    }
 
-    } else {
+    else if(signal === "SELL"){
 
-        return {
-            stopLoss: "--",
-            tp1: "--",
-            tp2: "--",
-            tp3: "--",
-            rr: "--"
+        stopLoss = price + (atr * 1.5);
+
+        tp1 = price - (atr * 1.5);
+
+        tp2 = price - (atr * 3);
+
+        tp3 = price - (atr * 4.5);
+
+    }
+
+    else{
+
+        return{
+
+            stopLoss:"--",
+            tp1:"--",
+            tp2:"--",
+            tp3:"--",
+            rr:"--"
+
         };
 
     }
 
-    return {
+    return{
 
-        stopLoss: stopLoss.toFixed(2),
-        tp1: tp1.toFixed(2),
-        tp2: tp2.toFixed(2),
-        tp3: tp3.toFixed(2),
-        rr: "1 : 3"
+        stopLoss:stopLoss.toFixed(2),
+
+        tp1:tp1.toFixed(2),
+
+        tp2:tp2.toFixed(2),
+
+        tp3:tp3.toFixed(2),
+
+        rr:"1 : 3"
 
     };
 
