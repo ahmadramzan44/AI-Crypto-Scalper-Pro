@@ -374,6 +374,44 @@ else{
     document.getElementById("aiScore").className = "sell";
 
 }
+let tradeStatus = "AVOID";
+
+if(
+    aiScore >= 90 &&
+    (finalSignal === "STRONG BUY" ||
+     finalSignal === "STRONG SELL")
+){
+
+    tradeStatus = "SAFE";
+
+}
+else if(aiScore >= 70){
+
+    tradeStatus = "CAUTION";
+
+}
+
+document.getElementById("tradeStatus").innerText =
+tradeStatus;
+
+if(tradeStatus === "SAFE"){
+
+    document.getElementById("tradeStatus").className =
+    "buy";
+
+}
+else if(tradeStatus === "CAUTION"){
+
+    document.getElementById("tradeStatus").className =
+    "wait";
+
+}
+else{
+
+    document.getElementById("tradeStatus").className =
+    "sell";
+
+}
 const risk =
 calculateRisk(
 price,
