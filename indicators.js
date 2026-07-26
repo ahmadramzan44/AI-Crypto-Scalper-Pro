@@ -1,27 +1,26 @@
-// ==============================
-// Technical Indicators
-// ==============================
+// =====================================
+// AI Crypto Scalper Pro
+// Indicators
+// Version 1.0
+// =====================================
 
-// EMA Calculator
-function calculateEMA(prices, period) {
+// =============================
+// EMA
+// =============================
+
+function getEMA(prices, period){
+
+    if(prices.length < period){
+        return 0;
+    }
 
     const multiplier = 2 / (period + 1);
 
-    let ema = [];
+    let ema = prices[0];
 
-    let firstEMA = prices
-        .slice(0, period)
-        .reduce((a, b) => a + b, 0) / period;
+    for(let i = 1; i < prices.length; i++){
 
-    ema.push(firstEMA);
-
-    for (let i = period; i < prices.length; i++) {
-
-        let value =
-            ((prices[i] - ema[ema.length - 1]) * multiplier)
-            + ema[ema.length - 1];
-
-        ema.push(value);
+        ema = ((prices[i] - ema) * multiplier) + ema;
 
     }
 
@@ -29,88 +28,75 @@ function calculateEMA(prices, period) {
 
 }
 
-// Latest EMA Value
-function getEMA(prices, period) {
+// =============================
+// RSI (14)
+// =============================
 
-    const ema = calculateEMA(prices, period);
+function calculateRSI(prices, period = 14){
 
-    return ema[ema.length - 1];
+    if(prices.length < period + 1){
+        return 50;
+    }
 
-}
-// ==============================
-// RSI Calculator
-// ==============================
+    let gain = 0;
+    let loss = 0;
 
-function calculateRSI(prices, period = 14) {
+    for(let i = prices.length - period; i < prices.length; i++){
 
-    let gains = 0;
-    let losses = 0;
+        const change = prices[i] - prices[i - 1];
 
-    for (let i = 1; i <= period; i++) {
+        if(change > 0){
 
-        let change = prices[i] - prices[i - 1];
+            gain += change;
 
-        if (change >= 0) {
-            gains += change;
-        } else {
-            losses += Math.abs(change);
+        }else{
+
+            loss += Math.abs(change);
+
         }
 
     }
 
-    let avgGain = gains / period;
-    let avgLoss = losses / period;
-
-    for (let i = period + 1; i < prices.length; i++) {
-
-        let change = prices[i] - prices[i - 1];
-
-        let gain = change > 0 ? change : 0;
-        let loss = change < 0 ? Math.abs(change) : 0;
-
-        avgGain = ((avgGain * (period - 1)) + gain) / period;
-        avgLoss = ((avgLoss * (period - 1)) + loss) / period;
-
-    }
-
-    if (avgLoss === 0) {
+    if(loss === 0){
         return 100;
     }
 
-    const rs = avgGain / avgLoss;
+    const rs = gain / loss;
 
     return 100 - (100 / (1 + rs));
 
 }
-// ==============================
+
+// =============================
 // MACD
-// ==============================
+// =============================
 
-function calculateMACD(prices) {
+function calculateMACD(prices){
 
-    const ema12 = getEMA(prices, 12);
-    const ema26 = getEMA(prices, 26);
+    const ema12 = getEMA(prices,12);
+
+    const ema26 = getEMA(prices,26);
 
     return ema12 - ema26;
 
 }
-// ==============================
+// =============================
 // ATR (Average True Range)
-// ==============================
+// =============================
 
-function calculateATR(candles, period = 14) {
+function calculateATR(candles, period = 14){
 
-    if (candles.length < period + 1) {
+    if(!candles || candles.length < period + 1){
         return 0;
     }
 
-    let trueRanges = [];
+    let trValues = [];
 
-    for (let i = 1; i < candles.length; i++) {
+    for(let i = 1; i < candles.length; i++){
 
         const high = parseFloat(candles[i][2]);
         const low = parseFloat(candles[i][3]);
-        const prevClose = parseFloat(candles[i - 1][4]);
+        const prevClose = parseFloat(candles[i-1][4]);
 
         const tr = Math.max(
             high - low,
@@ -118,14 +104,56 @@ function calculateATR(candles, period = 14) {
             Math.abs(low - prevClose)
         );
 
-        trueRanges.push(tr);
+        trValues.push(tr);
+
     }
 
-    const recentTR = trueRanges.slice(-period);
+    const recent = trValues.slice(-period);
 
-    const atr =
-        recentTR.reduce((sum, value) => sum + value, 0) / period;
+    const atr = recent.reduce((a,b)=>a+b,0)/period;
 
     return atr;
+
+}
+
+// =============================
+// Volume
+// =============================
+
+function calculateVolume(candles){
+
+    if(!candles || candles.length===0){
+        return 0;
+    }
+
+    return parseFloat(
+        candles[candles.length-1][5]
+    );
+
+}
+
+// =============================
+// Trend Helper
+// =============================
+
+function getTrend(ema9, ema21, ema50, ema200){
+
+    if(
+        ema9 > ema21 &&
+        ema21 > ema50 &&
+        ema50 > ema200
+    ){
+        return "Bullish";
+    }
+
+    if(
+        ema9 < ema21 &&
+        ema21 < ema50 &&
+        ema50 < ema200
+    ){
+        return "Bearish";
+    }
+
+    return "Sideways";
 
 }
