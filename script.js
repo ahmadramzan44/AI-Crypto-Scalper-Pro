@@ -610,6 +610,47 @@ else if(ema50_4h < ema200_4h){
 document.getElementById("trend4h").innerText =
 trend4h;
 
+let marketSentiment = "Neutral";
+
+if(
+    trend1h === "Bullish" &&
+    trend4h === "Bullish"
+){
+
+    marketSentiment = "Bullish";
+
+}
+else if(
+    trend1h === "Bearish" &&
+    trend4h === "Bearish"
+){
+
+    marketSentiment = "Bearish";
+
+}
+
+document.getElementById("marketSentiment").innerText =
+marketSentiment;
+
+if(marketSentiment === "Bullish"){
+
+    document.getElementById("marketSentiment").className =
+    "buy";
+
+}
+else if(marketSentiment === "Bearish"){
+
+    document.getElementById("marketSentiment").className =
+    "sell";
+
+}
+else{
+
+    document.getElementById("marketSentiment").className =
+    "wait";
+
+}
+    
 if(trend4h === "Bullish"){
 
     document.getElementById("trend4h").className = "buy";
