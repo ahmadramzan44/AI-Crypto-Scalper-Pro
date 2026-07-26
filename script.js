@@ -141,23 +141,44 @@ async function runScanner(){
 
         const ema21 =
         getEMA(closes,21);
+        const ema50 =
+getEMA(closes,50);
 
-        let signal = "WAIT";
+const ema200 =
+getEMA(closes,200);
 
-        if(ema9 > ema21){
+const rsi =
+calculateRSI(closes);
 
-            signal = "BUY";
+const macdData =
+calculateMACD(closes);
 
-        }
-        else if(ema9 < ema21){
+const macd =
+macdData.macd;
 
-            signal = "SELL";
+const volume =
+calculateVolume(candles);
 
-        }
+const adx =
+calculateADX(candles);
 
-        const ai =
-        signal === "BUY" ? 80 :
-        signal === "SELL" ? 80 : 50;
+       const result =
+generateSignal(
+ema9,
+ema21,
+ema50,
+ema200,
+rsi,
+macd,
+volume,
+adx
+);
+
+let signal =
+result.signal;
+
+       const ai =
+result.confidence;
 
         const win =
         ai + "%";
