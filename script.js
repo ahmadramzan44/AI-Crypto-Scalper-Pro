@@ -125,6 +125,8 @@ async function runScanner(){
     document.getElementById("scannerBody");
 
     body.innerHTML = "";
+   
+    const scannerResults = [];
 
    for(const coin of scannerCoins){
 
@@ -218,26 +220,14 @@ result.confidence;
         const win =
         ai + "%";
 
-        body.insertAdjacentHTML(
-        "beforeend",
-        `
-        <tr>
-        <td>${coin}</td>
-        <td class="${
-signal.includes("BUY")
-? "buy"
-: signal.includes("SELL")
-? "sell"
-: "wait"
-}">
-${signal}
-</td>
-        <td>${ai}</td>
-        <td>${win}</td>
-        </tr>
-        `
-        );
+        scannerResults.push({
 
+coin,
+signal,
+ai,
+win
+
+});
     }
     catch(error){
 
@@ -246,7 +236,31 @@ ${signal}
     }
 
 }
-    
+scannerResults.sort((a,b)=>b.ai-a.ai);
+
+for(const item of scannerResults){
+
+    body.insertAdjacentHTML(
+    "beforeend",
+    `
+    <tr>
+    <td>${item.coin}</td>
+    <td class="${
+    item.signal.includes("BUY")
+    ? "buy"
+    : item.signal.includes("SELL")
+    ? "sell"
+    : "wait"
+    }">
+    ${item.signal}
+    </td>
+    <td>${item.ai}</td>
+    <td>${item.win}</td>
+    </tr>
+    `
+    );
+
+}    
 }
 // =============================
 // Load Coin
