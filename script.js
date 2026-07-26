@@ -132,6 +132,8 @@ calculateRSI(closes);
 const macdData =
 calculateMACD(closes);
 
+console.log(macdData);
+
 const macd =
 macdData.macd;
 
