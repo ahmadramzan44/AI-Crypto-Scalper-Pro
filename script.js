@@ -333,7 +333,47 @@ document.getElementById("signal").innerText =
 finalSignal;
 document.getElementById("confidence").innerText =
 result.confidence + "%";
+let aiScore = result.confidence;
 
+// 1H Trend Bonus
+if(trend1h === trend){
+
+    aiScore += 10;
+
+}
+
+// Pattern Bonus
+if(pattern === "Bullish Engulfing" ||
+   pattern === "Bearish Engulfing"){
+
+    aiScore += 10;
+
+}
+
+// Limit to 100
+if(aiScore > 100){
+
+    aiScore = 100;
+
+}
+
+document.getElementById("aiScore").innerText =
+aiScore + " / 100";
+if(aiScore >= 90){
+
+    document.getElementById("aiScore").className = "buy";
+
+}
+else if(aiScore >= 70){
+
+    document.getElementById("aiScore").className = "wait";
+
+}
+else{
+
+    document.getElementById("aiScore").className = "sell";
+
+}
 const risk =
 calculateRisk(
 price,
