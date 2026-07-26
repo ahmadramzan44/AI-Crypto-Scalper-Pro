@@ -11,7 +11,8 @@ function generateSignal(
     ema200,
     rsi,
     macd,
-    volume
+    volume,
+    adx
 ){
 
     let score = 0;
@@ -31,7 +32,13 @@ function generateSignal(
         score += 20;
 
     }
+// ADX (20 Points)
 
+if(adx >= 25){
+
+    score += 20;
+
+}
     // MACD (20 Points)
 
     if(macd > 0){
