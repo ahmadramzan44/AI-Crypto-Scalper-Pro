@@ -12,7 +12,8 @@ function generateSignal(
     rsi,
     macd,
     volume,
-    adx
+    adx,
+    trend1h
 ){
 
     let score = 0;
@@ -54,7 +55,16 @@ if(adx >= 25){
         score += 20;
 
     }
+if(trend1h === "Bullish"){
 
+    score += 20;
+
+}
+else if(trend1h === "Bearish"){
+
+    score -= 20;
+
+}
     let signal = "WAIT";
 
     if(score >= 80){
