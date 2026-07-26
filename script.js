@@ -9,6 +9,8 @@ const PASSWORD = "1234";
 
 let autoRefresh = null;
 
+let lastHistorySignal = "";
+
 // =============================
 // Login
 // =============================
@@ -498,27 +500,32 @@ else{
     "sell";
 
 }
-const historyBody =
-document.getElementById("historyBody");
+if(lastHistorySignal !== symbol + finalSignal){
 
-historyBody.insertAdjacentHTML(
-"afterbegin",
-`
-<tr>
-<td>${new Date().toLocaleTimeString()}</td>
-<td>${symbol}</td>
-<td>${finalSignal}</td>
-<td>${aiScore}</td>
-<td>${winProbability}%</td>
-<td>${tradeStatus}</td>
-</tr>
-`
-);
+    lastHistorySignal = symbol + finalSignal;
 
-// Sirf latest 20 rows rakho
-while(historyBody.rows.length > 20){
+    const historyBody =
+    document.getElementById("historyBody");
 
-    historyBody.deleteRow(20);
+    historyBody.insertAdjacentHTML(
+    "afterbegin",
+    `
+    <tr>
+    <td>${new Date().toLocaleTimeString()}</td>
+    <td>${symbol}</td>
+    <td>${finalSignal}</td>
+    <td>${aiScore}</td>
+    <td>${winProbability}%</td>
+    <td>${tradeStatus}</td>
+    </tr>
+    `
+    );
+
+    while(historyBody.rows.length > 20){
+
+        historyBody.deleteRow(20);
+
+    }
 
 }
 const risk =
