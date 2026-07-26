@@ -147,6 +147,13 @@ macdData.macd;
 const atr =
 calculateATR(candles);
 
+const entryLow = (price - (atr * 0.20)).toFixed(2);
+
+const entryHigh = (price + (atr * 0.20)).toFixed(2);
+
+document.getElementById("entryZone").innerText =
+entryLow + " - " + entryHigh;
+
 const volume =
 calculateVolume(candles);
 
