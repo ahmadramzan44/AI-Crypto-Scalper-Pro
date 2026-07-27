@@ -240,49 +240,7 @@ function getSupportResistance(candles){
 // Support & Resistance
 // =============================
 
-function calculateSupportResistance(candles){
 
-    if(!candles || candles.length < 20){
-
-        return {
-            support:0,
-            resistance:0
-        };
-
-    }
-
-    const recent = candles.slice(-20);
-
-    let support = Number.MAX_VALUE;
-    let resistance = 0;
-
-    recent.forEach(candle=>{
-
-        const high = parseFloat(candle[2]);
-        const low = parseFloat(candle[3]);
-
-        if(low < support){
-
-            support = low;
-
-        }
-
-        if(high > resistance){
-
-            resistance = high;
-
-        }
-
-    });
-
-    return{
-
-        support,
-        resistance
-
-    };
-
-}
 function detectPattern(candles){
 
     if(!candles || candles.length < 2){
