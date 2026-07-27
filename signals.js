@@ -228,8 +228,7 @@ else{
 // Final Signal Decision
 // =============================
 
-let signal = "WAIT";
-let confidence = score;
+confidence = score;
 
 if(
     bullish >= 6 &&
