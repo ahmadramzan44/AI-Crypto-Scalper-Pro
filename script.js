@@ -216,8 +216,12 @@ else if(ema50_1h < ema200_1h){
 const trend4h = trend1h;
 const pattern = "None";
 const atr = 1;        
-        const result =
+       
+const result =
 generateSignal(
+price,
+support,
+resistance,
 ema9,
 ema21,
 ema50,
@@ -229,10 +233,7 @@ adx,
 trend1h,
 trend4h,
 pattern,
-atr,
-price,
-support,
-resistance
+atr
 );
 
 let signal =
@@ -362,13 +363,7 @@ function selectCoin(symbol){
     analyzeCoin();
 
 }
-function selectCoin(symbol){
 
-    document.getElementById("coin").value = symbol;
-
-    analyzeCoin();
-
-}
 function loadChart(symbol){
 
     document.getElementById("tvChart").innerHTML = "";
@@ -731,6 +726,9 @@ else{
 }
 const result =
 generateSignal(
+price,
+support,
+resistance,
 ema9,
 ema21,
 ema50,
@@ -742,10 +740,7 @@ adx,
 trend1h,
 trend4h,
 pattern,
-atr,
-price,
-support,
-resistance
+atr
 );
 
 document.getElementById("signal").innerText =
@@ -1199,13 +1194,5 @@ function sendNotification(title, message){
         });
 
     }
-
-}
-
-function selectCoin(symbol){
-
-    document.getElementById("coin").value = symbol;
-
-    analyzeCoin();
 
 }
