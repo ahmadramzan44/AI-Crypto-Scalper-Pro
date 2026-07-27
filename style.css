@@ -823,3 +823,47 @@ background:#00d8f5;
     text-align:center;
 
 }
+
+.chartSection{
+
+    background:#1e293b;
+
+    border-radius:15px;
+
+    padding:15px;
+
+    min-height:520px;
+
+}
+
+#tvChart{
+
+    width:100%;
+
+    height:500px;
+
+}
+
+.historySection{
+
+    background:#1e293b;
+
+    border-radius:15px;
+
+    padding:15px;
+
+    margin-top:20px;
+
+    max-height:520px;
+
+    overflow-y:auto;
+
+}
+
+#historyTableContainer{
+
+    width:100%;
+
+    overflow-x:auto;
+
+}
