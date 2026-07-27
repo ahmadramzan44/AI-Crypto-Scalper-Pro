@@ -221,6 +221,21 @@ function calculateADX(candles, period = 14){
     return Math.min(50, adx);
 
 }
+
+function getSupportResistance(candles){
+
+    const lows = candles.map(c => parseFloat(c[3]));
+    const highs = candles.map(c => parseFloat(c[2]));
+
+    const support = Math.min(...lows.slice(-50));
+    const resistance = Math.max(...highs.slice(-50));
+
+    return {
+        support,
+        resistance
+    };
+
+}
 // =============================
 // Support & Resistance
 // =============================
