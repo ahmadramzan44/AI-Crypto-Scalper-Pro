@@ -171,43 +171,38 @@ else{
 
 }
     
- // =============================
+// =============================
 // MACD
 // =============================
 
 if(macd > 1){
 
     bullish++;
-
     score += 20;
-
-    buyReasons.push("Strong MACD");
+    buyReasons.push("Strong Bullish MACD");
 
 }
 else if(macd > 0){
 
     bullish++;
-
     score += 10;
-
     buyReasons.push("Bullish MACD");
 
 }
-else if(macd < -1){
+else if(macd >= -1 && macd < 0){
 
     bearish++;
-
-    sellReasons.push("Strong Bearish MACD");
-
-}
-else if(macd < 0){
-
-    bearish++;
-
+    score -= 10;
     sellReasons.push("Bearish MACD");
 
 }
+else{
 
+    bearish++;
+    score -= 20;
+    sellReasons.push("Strong Bearish MACD");
+
+}
    // =============================
 // Volume
 // =============================
