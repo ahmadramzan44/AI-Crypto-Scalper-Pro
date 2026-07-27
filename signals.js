@@ -203,6 +203,7 @@ else{
     sellReasons.push("Strong Bearish MACD");
 
 }
+    
    // =============================
 // Volume
 // =============================
@@ -210,29 +211,37 @@ else{
 if(volume >= 2){
 
     bullish++;
-
-    score += 10;
-
+    score += 15;
     buyReasons.push("Very High Volume");
+
+}
+else if(volume >= 1.5){
+
+    bullish++;
+    score += 10;
+    buyReasons.push("High Volume");
 
 }
 else if(volume >= 1.2){
 
     bullish++;
-
     score += 5;
-
     buyReasons.push("Healthy Volume");
+
+}
+else if(volume >= 0.8){
+
+    score -= 5;
+    sellReasons.push("Low Volume");
 
 }
 else{
 
     bearish++;
-
-    sellReasons.push("Low Volume");
+    score -= 15;
+    sellReasons.push("Very Low Volume");
 
 }
-
 // =============================
 // Final Signal Decision
 // =============================
