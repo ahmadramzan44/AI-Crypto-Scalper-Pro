@@ -20,10 +20,17 @@ function generateSignal(
 ){
 
 let score = 0;
+
+let confidence = 0;
+
+let signal = "WAIT";
+
 let bullish = 0;
+
 let bearish = 0;
 
 let buyReasons = [];
+
 let sellReasons = [];
     
 // EMA Structure
@@ -309,7 +316,155 @@ if(atr < 0.5){
     confidence -= 10;
 
 }
+// Final Signal Decision
+if(score >= 80){
 
+    signal = "BUY";
+
+}
+else if(score <= 30){
+
+    signal = "SELL";
+
+}
+else{
+
+    signal = "WAIT";
+
+}
+
+// Base Confidence
+confidence = score;
+
+// Support / Resistance Filter
+if(signal === "BUY" && resistance > 0){
+
+    const distance =
+    ((resistance - price) / price) * 100;
+
+    if(distance < 1){
+
+        confidence -= 15;
+
+    }
+
+}
+
+if(signal === "SELL" && support > 0){
+
+    const distance =
+    ((price - support) / price) * 100;
+
+    if(distance < 1){
+
+        confidence -= 15;
+
+    }
+
+}
+// Final Signal Decision
+if(score >= 80){
+
+    signal = "BUY";
+
+}
+else if(score <= 30){
+
+    signal = "SELL";
+
+}
+else{
+
+    signal = "WAIT";
+
+}
+
+// Base Confidence
+confidence = score;
+
+// Support / Resistance Filter
+if(signal === "BUY" && resistance > 0){
+
+    const distance = ((resistance - price) / price) * 100;
+
+    if(distance < 1){
+
+        confidence -= 15;
+
+    }
+
+}
+
+if(signal === "SELL" && support > 0){
+
+    const distance = ((price - support) / price) * 100;
+
+    if(distance < 1){
+
+        confidence -= 15;
+
+    }
+
+}
+// Strong Trend Bonus
+if(adx >= 35){
+
+    confidence += 5;
+
+}
+
+// High Volume Bonus
+if(volume >= 1.5){
+
+    confidence += 5;
+
+}
+
+// 1H Confirmation
+if(trend1h === "Bullish" && signal === "BUY"){
+
+    confidence += 5;
+
+}
+else if(trend1h === "Bearish" && signal === "SELL"){
+
+    confidence += 5;
+
+}
+
+// 4H Confirmation
+if(trend4h === "Bullish" && signal === "BUY"){
+
+    confidence += 5;
+
+}
+else if(trend4h === "Bearish" && signal === "SELL"){
+
+    confidence += 5;
+
+}
+
+// Pattern Bonus
+if(pattern === "Bullish Engulfing" && signal === "BUY"){
+
+    confidence += 5;
+
+}
+
+if(pattern === "Bearish Engulfing" && signal === "SELL"){
+
+    confidence += 5;
+
+}
+
+// ATR Filter
+if(atr < 0.5){
+
+    confidence -= 10;
+
+}
+
+confidence = Math.max(0, Math.min(100, confidence));
 // Limit Confidence
 if(confidence > 100){
 
