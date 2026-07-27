@@ -208,7 +208,11 @@ else if(ema50_1h < ema200_1h){
     trend1h = "Bearish";
 
 }
-       const result =
+   
+const trend4h = trend1h;
+const pattern = "None";
+const atr = 1;        
+        const result =
 generateSignal(
 ema9,
 ema21,
@@ -262,6 +266,14 @@ win
 }
 scannerResults.sort((a,b)=>b.ai-a.ai);
 
+if(scannerResults.length === 0){
+
+    console.log("Scanner Results Empty");
+
+    return;
+
+}
+    
 const bestCoin = scannerResults[0];
 
 document.getElementById("topCoin").innerText =
