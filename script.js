@@ -257,15 +257,19 @@ win
 
 });
     }
-    catch(error){
+   catch(error){
 
-        console.log(coin,error);
+    console.error("Coin:", coin);
 
-    }
+    console.error(error);
+
+}
 
 }
 scannerResults.sort((a,b)=>b.ai-a.ai);
 
+console.log(scannerResults);
+    
 if(scannerResults.length === 0){
 
     console.log("Scanner Results Empty");
