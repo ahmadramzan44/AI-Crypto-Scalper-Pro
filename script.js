@@ -518,8 +518,16 @@ calculateADX(candles);
 
 const sr =
 getSupportResistance(candles);
+
+const support =
+sr.support;
+
+const resistance =
+sr.resistance;
+
 const pattern =
 detectPattern(candles);    
+
 document.getElementById("ema9").innerText =
 ema9.toFixed(2);
 
