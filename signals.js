@@ -146,32 +146,27 @@ else if(rsi > 70){
 if(adx >= 35){
 
     bullish++;
-
     score += 20;
-
     buyReasons.push("Very Strong Trend");
 
 }
 else if(adx >= 25){
 
     bullish++;
-
     score += 10;
-
     buyReasons.push("Strong Trend");
 
 }
 else if(adx >= 20){
 
     score += 5;
-
     buyReasons.push("Moderate Trend");
 
 }
 else{
 
-    bearish++;
-
+    // Weak trend = avoid trade, not automatic SELL
+    score -= 10;
     sellReasons.push("Weak Trend");
 
 }
