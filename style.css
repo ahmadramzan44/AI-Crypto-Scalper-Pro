@@ -152,6 +152,20 @@ grid-template-columns:repeat(4,1fr);
 
 gap:18px;
 
+align-items:stretch;
+
+}
+
+.card{
+
+display:flex;
+
+flex-direction:column;
+
+justify-content:space-between;
+
+min-height:170px;
+
 }
 
 .card{
@@ -182,6 +196,8 @@ margin-bottom:10px;
 
 font-size:14px;
 
+min-height:36px;
+   
 }
 
 .card h2{
@@ -190,7 +206,10 @@ font-size:22px;
 
 font-weight:bold;
 
+word-break:break-word;
+
 }
+
 /* =====================================
    Responsive Design
 ===================================== */
