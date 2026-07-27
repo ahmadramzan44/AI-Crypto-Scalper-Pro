@@ -194,15 +194,6 @@ calculateVolume(candles);
 
 const adx =
 calculateADX(candles);
-
-const sr =
-getSupportResistance(candles);
-
-const support =
-sr.support;
-
-const resistance =
-sr.resistance;
         
 const candles1h =
 await getCandles(coin,"1h",200);
