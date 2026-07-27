@@ -33,90 +33,109 @@ let buyReasons = [];
 
 let sellReasons = [];
     
-// EMA Structure
+// =============================
+// EMA Trend Structure
+// =============================
 
+// EMA 9 vs EMA 21
 if(ema9 > ema21){
 
-    bullish += 1;
-    score += 10;
-
+    bullish++;
+    score += 5;
     buyReasons.push("EMA9 > EMA21");
 
 }
 else{
 
-    bearish += 1;
-
+    bearish++;
+    score -= 5;
     sellReasons.push("EMA9 < EMA21");
 
 }
 
+// EMA 21 vs EMA 50
 if(ema21 > ema50){
 
-    bullish += 1;
+    bullish++;
     score += 10;
-
     buyReasons.push("EMA21 > EMA50");
 
 }
 else{
 
-    bearish += 1;
+    bearish++;
+    score -= 10;
+    sellReasons.push("EMA21 < EMA50");
 
 }
 
+// EMA 50 vs EMA 200
 if(ema50 > ema200){
 
-    bullish += 1;
+    bullish++;
     score += 20;
-
     buyReasons.push("EMA50 > EMA200");
 
 }
 else{
 
-    bearish += 1;
-
+    bearish++;
+    score -= 20;
     sellReasons.push("EMA50 < EMA200");
 
 }
-
-   // =============================
+    
+ // =============================
 // RSI
 // =============================
 
 if(rsi >= 55 && rsi <= 65){
 
     bullish++;
-
     score += 20;
-
     buyReasons.push("Healthy RSI");
 
 }
 else if(rsi >= 50 && rsi < 55){
 
     bullish++;
-
     score += 10;
-
     buyReasons.push("RSI Improving");
 
 }
 else if(rsi > 65 && rsi <= 70){
 
     bullish++;
-
-    score += 10;
-
-    buyReasons.push("RSI Strong");
+    score += 5;
+    buyReasons.push("Strong RSI");
 
 }
-else if(rsi < 45){
+else if(rsi >= 45 && rsi < 50){
 
     bearish++;
-
+    score -= 5;
     sellReasons.push("Weak RSI");
+
+}
+else if(rsi >= 35 && rsi < 45){
+
+    bearish++;
+    score -= 15;
+    sellReasons.push("Bearish RSI");
+
+}
+else if(rsi < 35){
+
+    bearish++;
+    score -= 20;
+    sellReasons.push("Oversold RSI");
+
+}
+else if(rsi > 70){
+
+    bearish++;
+    score -= 15;
+    sellReasons.push("Overbought RSI");
 
 }
     
