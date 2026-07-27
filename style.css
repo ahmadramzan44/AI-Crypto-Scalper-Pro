@@ -613,3 +613,36 @@ grid-template-columns:1fr;
 }
 
 }
+
+/* ===== History Section ===== */
+
+.historySection{
+
+margin-top:30px;
+
+background:#1e293b;
+
+padding:20px;
+
+border-radius:16px;
+
+box-shadow:0 0 15px rgba(255,255,255,.05);
+
+}
+
+#historyTable{
+
+width:100%;
+
+border-collapse:collapse;
+
+}
+
+#historyTable th,
+#historyTable td{
+
+padding:12px;
+
+text-align:center;
+
+}
