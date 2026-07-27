@@ -517,7 +517,7 @@ const adx =
 calculateADX(candles);
 
 const sr =
-calculateSupportResistance(candles);
+getSupportResistance(candles);
 const pattern =
 detectPattern(candles);    
 document.getElementById("ema9").innerText =
