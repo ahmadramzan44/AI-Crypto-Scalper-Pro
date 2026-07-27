@@ -40,22 +40,22 @@ if(Notification.permission !== "granted"){
 
 function login(){
 
-    const username =
-        document.getElementById("user").value.trim();
+    const user = document.getElementById("user").value;
+    const pass = document.getElementById("pass").value;
 
-    const password =
-        document.getElementById("pass").value.trim();
+    if(user === "admin" && pass === "admin"){
 
-    if(
-        username !== USERNAME ||
-        password !== PASSWORD
-    ){
-
-        alert("Wrong Username or Password");
-
-        return;
+        document.getElementById("login").style.display = "none";
+        document.getElementById("dashboard").style.display = "block";
 
     }
+    else{
+
+        alert("Invalid Login");
+
+    }
+
+}
 
     document.getElementById("login").style.display = "none";
 
