@@ -217,7 +217,11 @@ ema200,
 rsi,
 macd,
 volume,
-adx
+adx,
+trend1h,
+trend4h,
+pattern,
+atr
 );
 
 let signal =
@@ -704,7 +708,10 @@ rsi,
 macd,
 volume,
 adx,
-trend1h
+trend1h,
+trend1h,
+pattern,
+atr
 );
 
 document.getElementById("signal").innerText =
