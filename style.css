@@ -782,3 +782,44 @@ background:#00d8f5;
     height:480px;
 
 }
+
+/* ===== History ===== */
+
+.historySection{
+
+    background:#1e293b;
+
+    border-radius:15px;
+
+    padding:15px;
+
+    max-height:520px;
+
+    overflow-y:auto;
+
+}
+
+#historyTableContainer{
+
+    width:100%;
+
+    overflow-x:auto;
+
+}
+
+#historyTable{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+}
+
+#historyTable th,
+#historyTable td{
+
+    padding:8px;
+
+    text-align:center;
+
+}
