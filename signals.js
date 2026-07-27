@@ -169,12 +169,6 @@ else{
     score -= 20;
     sellReasons.push("Weak Trend - No Momentum");
 
-}else{
-
-    // Weak trend = avoid trade, not automatic SELL
-    score -= 10;
-    sellReasons.push("Weak Trend");
-
 }
     
 // =============================
