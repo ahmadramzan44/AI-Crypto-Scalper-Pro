@@ -158,6 +158,17 @@ document.getElementById("scannerFilter").value;
         const closes =
         candles.map(c => parseFloat(c[4]));
 
+        const price =
+closes[closes.length - 1];
+
+const sr =
+getSupportResistance(candles);
+
+const support =
+sr.support;
+
+const resistance =
+sr.resistance;
         const ema9 =
         getEMA(closes,9);
 
@@ -184,6 +195,15 @@ calculateVolume(candles);
 const adx =
 calculateADX(candles);
 
+const sr =
+getSupportResistance(candles);
+
+const support =
+sr.support;
+
+const resistance =
+sr.resistance;
+        
 const candles1h =
 await getCandles(coin,"1h",200);
 
@@ -225,7 +245,10 @@ adx,
 trend1h,
 trend4h,
 pattern,
-atr
+atr,
+price,
+support,
+resistance
 );
 
 let signal =
@@ -725,9 +748,12 @@ macd,
 volume,
 adx,
 trend1h,
-trend1h,
+trend4h,
 pattern,
-atr
+atr,
+price,
+support,
+resistance
 );
 
 document.getElementById("signal").innerText =
