@@ -165,6 +165,12 @@ else if(adx >= 20){
 }
 else{
 
+    bearish++;
+    score -= 20;
+    sellReasons.push("Weak Trend - No Momentum");
+
+}else{
+
     // Weak trend = avoid trade, not automatic SELL
     score -= 10;
     sellReasons.push("Weak Trend");
@@ -242,7 +248,23 @@ else{
     sellReasons.push("Very Low Volume");
 
 }
-    
+
+// =============================
+// Multi Timeframe Filter
+// =============================
+
+if(trend1h !== trend4h){
+
+    score -= 15;
+
+    buyReasons.push("MTF Conflict");
+
+}
+else{
+
+    score += 10;
+
+}    
 // =============================
 // Final Signal Decision
 // =============================
@@ -373,7 +395,15 @@ if(signal === "SELL" && support > 0){
 
 }
 
-// Final Confidence Limit
+// =============================
+// WAIT Confidence Filter
+// =============================
+
+if(signal === "WAIT"){
+
+    confidence = Math.min(confidence,40);
+
+}    
 confidence = Math.max(0, Math.min(100, confidence));
 
 return{
