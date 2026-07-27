@@ -216,6 +216,37 @@ else{
     sellReasons.push("Low Volume");
 
 }
+
+// =============================
+// Final Signal Decision
+// =============================
+
+let signal = "WAIT";
+let confidence = score;
+
+if(
+    bullish >= 6 &&
+    bearish <= 2 &&
+    score >= 70
+){
+
+    signal = "BUY";
+
+}
+else if(
+    bearish >= 6 &&
+    bullish <= 2 &&
+    score >= 70
+){
+
+    signal = "SELL";
+
+}
+else{
+
+    signal = "WAIT";
+
+}
     
 // =============================
 // AI Confidence Engine
