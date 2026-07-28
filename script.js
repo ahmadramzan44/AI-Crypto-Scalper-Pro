@@ -278,21 +278,46 @@ else if(signal === "SELL" && trend1h === "Bearish"){
 
 }
 
-       const ai =
-result.confidence;
+      let ai = result.confidence;
 
-        const win =
-        ai + "%";
+// 1H Bonus
+if(
+    (signal.includes("BUY") && trend1h === "Bullish") ||
+    (signal.includes("SELL") && trend1h === "Bearish")
+){
+    ai += 10;
+}
 
-        scannerResults.push({
+// 4H Bonus
+if(
+    (signal.includes("BUY") && trend4h === "Bullish") ||
+    (signal.includes("SELL") && trend4h === "Bearish")
+){
+    ai += 10;
+}
 
-coin,
-signal,
-ai,
-win
+// Pattern Bonus
+if(
+    pattern === "Bullish Engulfing" ||
+    pattern === "Bearish Engulfing"
+){
+    ai += 10;
+}
+
+ai = Math.min(100, ai);
+
+const win = ai + "%";
+
+scannerResults.push({
+
+    coin,
+    signal,
+    ai,
+    win
 
 });
-    }
+    
+}
    catch(error){
 
     console.error("Coin:", coin);
