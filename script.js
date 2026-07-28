@@ -214,7 +214,8 @@ else if(ema50_1h < ema200_1h){
 }
    
 const trend4h = trend1h;
-const pattern = "None";
+const pattern =
+detectPattern(candles);
 const atr = 1;        
        
 const result =
@@ -1164,5 +1165,71 @@ catch(error){
     alert(error);
 
 }
+
+}
+function detectPattern(candles){
+
+    if(!candles || candles.length < 2){
+        return "None";
+    }
+
+    const prev = candles[candles.length - 2];
+    const last = candles[candles.length - 1];
+
+    const prevOpen = parseFloat(prev[1]);
+    const prevClose = parseFloat(prev[4]);
+
+    const open = parseFloat(last[1]);
+    const close = parseFloat(last[4]);
+    const high = parseFloat(last[2]);
+    const low = parseFloat(last[3]);
+
+    const body = Math.abs(close - open);
+    const range = high - low;
+
+    // Bullish Engulfing
+    if(
+        prevClose < prevOpen &&
+        close > open &&
+        close >= prevOpen &&
+        open <= prevClose
+    ){
+        return "Bullish Engulfing";
+    }
+
+    // Bearish Engulfing
+    if(
+        prevClose > prevOpen &&
+        close < open &&
+        open >= prevClose &&
+        close <= prevOpen
+    ){
+        return "Bearish Engulfing";
+    }
+
+    // Hammer
+    if(
+        body > 0 &&
+        (Math.min(open,close)-low) > body*2 &&
+        (high-Math.max(open,close)) < body
+    ){
+        return "Hammer";
+    }
+
+    // Shooting Star
+    if(
+        body > 0 &&
+        (high-Math.max(open,close)) > body*2 &&
+        (Math.min(open,close)-low) < body
+    ){
+        return "Shooting Star";
+    }
+
+    // Doji
+    if(range > 0 && body/range < 0.1){
+        return "Doji";
+    }
+
+    return "None";
 
 }
