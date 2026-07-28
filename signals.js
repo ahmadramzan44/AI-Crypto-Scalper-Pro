@@ -287,14 +287,15 @@ const sellTrendConfirmed =
 // STRONG BUY
 if(
 
-    bullish >= 6 &&
-    score >= 55 &&
-    macd > 0 &&
-    rsi >= 55 &&
-    adx >= 25 &&
-    volume >= 1 &&
-    trendConfirmed
-
+bullish >= 6 &&
+score >= 55 &&
+macd > 0 &&
+rsi >= 55 &&
+rsi < 75 &&
+adx >= 25 &&
+volume >= 0.5 &&
+trendConfirmed
+     
 ){
 
     signal = "STRONG BUY";
@@ -304,12 +305,14 @@ if(
 // BUY
 else if(
 
-    bullish >= 4 &&
-    score >= 30 &&
-    macd > 0 &&
-    rsi >= 45 &&
-    adx >= 10 &&
-    trend4h === "Bullish"
+bullish >= 4 &&
+score >= 30 &&
+macd > 0 &&
+rsi >= 45 &&
+rsi < 75 &&
+adx >= 10 &&
+volume >= 0.5 &&
+trend4h === "Bullish"
 
 ){
 
@@ -324,6 +327,7 @@ else if(
     score <= -55 &&
     macd < 0 &&
     rsi <= 45 &&
+    rsi > 25
     adx >= 25 &&
     volume >= 1 &&
     sellTrendConfirmed
@@ -342,6 +346,7 @@ else if(
     score <= -10 &&
     macd < 0 &&
     rsi <= 50 &&
+    rsi > 25
     adx >= 10 &&
     trend4h === "Bearish"
 
@@ -384,6 +389,26 @@ if(volume >= 1.5){
 
 }
 
+// RSI Safety Filter
+if(rsi > 75){
+
+    confidence -= 20;
+
+}
+
+if(rsi < 25){
+
+    confidence -= 20;
+
+}
+
+// Low Volume Filter
+if(volume < 0.5){
+
+    confidence -= 20;
+
+}
+     
 // Multi Timeframe Confirmation
 if(signal === "BUY"){
 
