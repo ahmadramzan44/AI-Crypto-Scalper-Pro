@@ -11,7 +11,10 @@ function calculateRisk(price, atr, signal){
     let tp2;
     let tp3;
 
-    if(signal === "BUY"){
+    if(
+    signal === "BUY" ||
+    signal === "STRONG BUY"
+){
 
         stopLoss = price - (atr * 1.5);
 
@@ -23,7 +26,10 @@ function calculateRisk(price, atr, signal){
 
     }
 
-    else if(signal === "SELL"){
+    else if(
+    signal === "SELL" ||
+    signal === "STRONG SELL"
+){
 
         stopLoss = price + (atr * 1.5);
 
