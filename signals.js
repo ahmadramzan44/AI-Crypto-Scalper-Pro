@@ -287,13 +287,13 @@ const sellTrendConfirmed =
 // STRONG BUY
 if(
 
-bullish >= 6 &&
-score >= 55 &&
-macd > 0 &&
-adx >= 25 &&
-volume >= 0.5 &&
-trendConfirmed
-     
+    bullish >= 5 &&
+    score >= 50 &&
+    macd > 0 &&
+    adx >= 20 &&
+    volume >= 0.15 &&
+    trend4h === "Bullish"
+
 ){
 
     signal = "STRONG BUY";
@@ -303,12 +303,12 @@ trendConfirmed
 // BUY
 else if(
 
-bullish >= 4 &&
-score >= 30 &&
-macd > 0 &&
-adx >= 10 &&
-volume >= 0.5 &&
-trend4h === "Bullish"
+    bullish >= 4 &&
+    score >= 25 &&
+    macd > 0 &&
+    adx >= 15 &&
+    volume >= 0.10 &&
+    trend4h === "Bullish"
 
 ){
 
@@ -319,12 +319,12 @@ trend4h === "Bullish"
 // STRONG SELL
 else if(
 
-    bearish >= 6 &&
-    score <= -55 &&
+    bearish >= 5 &&
+    score <= -50 &&
     macd < 0 &&
-    adx >= 25 &&
-    volume >= 1 &&
-    sellTrendConfirmed
+    adx >= 20 &&
+    volume >= 0.15 &&
+    trend4h === "Bearish"
 
 ){
 
@@ -333,19 +333,17 @@ else if(
 }
 
 // SELL
-
 else if(
 
-    bearish >= 3 &&
-    score <= -10 &&
+    bearish >= 4 &&
+    score <= -25 &&
     macd < 0 &&
-    adx >= 10 &&
+    adx >= 15 &&
+    volume >= 0.10 &&
     trend4h === "Bearish"
 
 ){
 
-    console.log("SELL TRIGGERED");
-     
     signal = "SELL";
 
 }
@@ -355,7 +353,6 @@ else{
     signal = "WAIT";
 
 }
-
 console.log("Score:", score);
 console.log("Bullish:", bullish);
 console.log("Bearish:", bearish);
