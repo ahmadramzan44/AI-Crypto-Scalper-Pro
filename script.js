@@ -880,14 +880,16 @@ if(
 }
 // Pattern Bonus
 
-if(pattern === "Bullish Engulfing" ||
-pattern === "Bearish Engulfing" ||
-pattern === "Hammer" ||
-pattern === "Shooting Star" ||
-pattern === "Morning Star" ||
-pattern === "Evening Star"
+// Pattern Bonus
+if(
+    pattern === "Bullish Engulfing" ||
+    pattern === "Bearish Engulfing" ||
+    pattern === "Hammer" ||
+    pattern === "Shooting Star" ||
+    pattern === "Morning Star" ||
+    pattern === "Evening Star"
+){
     aiScore += 10;
-
 }
 
 aiScore = Math.min(100, aiScore);
