@@ -243,7 +243,20 @@ else{
     buyReasons.push("Normal Crypto Volume");
 
 }
+// Pattern Bonus
+if(pattern === "Bullish Engulfing"){
 
+    score += 10;
+    confidence += 5;
+
+}
+
+if(pattern === "Bearish Engulfing"){
+
+    score -= 10;
+    confidence += 5;
+
+}
 // =============================
 // Multi Timeframe Filter
 // =============================
@@ -377,20 +390,7 @@ if(signal === "SELL"){
 
 }
 
-// Pattern Bonus
-if(pattern === "Bullish Engulfing"){
 
-    score += 10;
-    confidence += 5;
-
-}
-
-if(pattern === "Bearish Engulfing"){
-
-    score -= 10;
-    confidence += 5;
-
-}
 // ATR Filter
 if(atr < 0.5){
 
