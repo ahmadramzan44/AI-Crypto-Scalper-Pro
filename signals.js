@@ -295,6 +295,7 @@ else if(
     score >= 30 &&
     macd > 0 &&
     rsi >= 50 &&
+    adx >= 10 &&
     trend4h === "Bullish"
 
 ){
@@ -327,6 +328,7 @@ else if(
     score <= -30 &&
     macd < 0 &&
     rsi <= 50 &&
+    adx >= 10 && 
     trend4h === "Bearish"
 
 ){
