@@ -284,25 +284,7 @@ if(
 
 }
 
-// SELL
-else if(
 
-    bearish >= 4 &&
-    score <= -35 &&
-    macd < 0 &&
-    sellTrendConfirmed
-
-){
-
-    signal = "SELL";
-
-}
-
-else{
-
-    signal = "WAIT";
-
-}
 // SELL
 else if(
 
