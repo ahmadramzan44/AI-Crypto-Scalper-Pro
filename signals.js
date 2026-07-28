@@ -294,7 +294,7 @@ else if(
     bullish >= 4 &&
     score >= 30 &&
     macd > 0 &&
-    rsi >= 50 &&
+    rsi >= 45 &&
     adx >= 10 &&
     trend4h === "Bullish"
 
