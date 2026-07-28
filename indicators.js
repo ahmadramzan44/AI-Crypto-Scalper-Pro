@@ -144,21 +144,31 @@ function calculateATR(candles, period = 14){
 }
 
 // =============================
-// Volume
+// Volume Ratio
 // =============================
 
 function calculateVolume(candles){
 
-    if(!candles || candles.length===0){
-        return 0;
+    if(!candles || candles.length < 21){
+        return 1;
     }
 
-    return parseFloat(
-        candles[candles.length-1][5]
-    );
+    let total = 0;
+
+    for(let i = candles.length - 21; i < candles.length - 1; i++){
+
+        total += parseFloat(candles[i][5]);
+
+    }
+
+    const avgVolume = total / 20;
+
+    const currentVolume =
+    parseFloat(candles[candles.length - 1][5]);
+
+    return currentVolume / avgVolume;
 
 }
-
 // =============================
 // Trend Helper
 // =============================
