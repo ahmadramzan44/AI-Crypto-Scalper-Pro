@@ -134,11 +134,11 @@ else if(rsi < 35){
     sellReasons.push("Oversold RSI");
 
 }
-else if(rsi > 70){
+else if(rsi > 80){
 
     bearish++;
-    score -= 15;
-    sellReasons.push("Overbought RSI");
+    score -= 5;
+    sellReasons.push("Extreme Overbought");
 
 }
     
@@ -243,36 +243,67 @@ else{
     buyReasons.push("Normal Crypto Volume");
 
 }
+// =============================
 // Pattern Bonus
+// =============================
+
 if(pattern === "Bullish Engulfing"){
 
+    bullish++;
     score += 10;
     confidence += 5;
+    buyReasons.push("Bullish Engulfing");
 
 }
+else if(pattern === "Hammer"){
 
-if(pattern === "Bearish Engulfing"){
+    bullish++;
+    score += 8;
+    confidence += 4;
+    buyReasons.push("Hammer");
 
+}
+else if(pattern === "Morning Star"){
+
+    bullish++;
+    score += 10;
+    confidence += 5;
+    buyReasons.push("Morning Star");
+
+}
+else if(pattern === "Bearish Engulfing"){
+
+    bearish++;
     score -= 10;
     confidence += 5;
+    sellReasons.push("Bearish Engulfing");
+
+}
+else if(pattern === "Shooting Star"){
+
+    bearish++;
+    score -= 8;
+    confidence += 4;
+    sellReasons.push("Shooting Star");
+
+}
+else if(pattern === "Evening Star"){
+
+    bearish++;
+    score -= 10;
+    confidence += 5;
+    sellReasons.push("Evening Star");
 
 }
 // =============================
 // Multi Timeframe Filter
 // =============================
 
-if(trend1h !== trend4h){
-
-    score -= 5;
-
-    buyReasons.push("MTF Conflict");
-
-}
-else{
+if(trend1h === trend4h){
 
     score += 10;
 
-}   
+}
      
 // =============================
 // Final Signal Decision V3
