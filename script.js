@@ -831,22 +831,26 @@ else if(finalSignal === "STRONG SELL"){
 }
 document.getElementById("signal").innerText =
 finalSignal;
+aiScore = Math.min(100, aiScore);
+
 document.getElementById("confidence").innerText =
-result.confidence + "%";
+aiScore + "%";
 let aiScore = result.confidence;
 
 // 1H Trend Bonus
-if(trend1h === trend){
-
+if(
+    (finalSignal.includes("BUY") && trend1h === "Bullish") ||
+    (finalSignal.includes("SELL") && trend1h === "Bearish")
+){
     aiScore += 10;
-
 }
-    
+
 // 4H Trend Bonus
-if(trend4h === trend){
-
+if(
+    (finalSignal.includes("BUY") && trend4h === "Bullish") ||
+    (finalSignal.includes("SELL") && trend4h === "Bearish")
+){
     aiScore += 10;
-
 }
 // Pattern Bonus
 if(pattern === "Bullish Engulfing" ||
