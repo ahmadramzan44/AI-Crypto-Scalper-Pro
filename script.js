@@ -831,10 +831,7 @@ else if(finalSignal === "STRONG SELL"){
 }
 document.getElementById("signal").innerText =
 finalSignal;
-aiScore = Math.min(100, aiScore);
 
-document.getElementById("confidence").innerText =
-aiScore + "%";
 let aiScore = result.confidence;
 
 // 1H Trend Bonus
@@ -853,12 +850,18 @@ if(
     aiScore += 10;
 }
 // Pattern Bonus
+
 if(pattern === "Bullish Engulfing" ||
-   pattern === "Bearish Engulfing"){
+pattern === "Bearish Engulfing"){
 
     aiScore += 10;
 
 }
+
+aiScore = Math.min(100, aiScore);
+
+document.getElementById("confidence").innerText =
+aiScore + "%";
 
 // Limit to 100
 if(aiScore > 100){
