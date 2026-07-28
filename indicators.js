@@ -231,9 +231,9 @@ function calculateADX(candles, period = 14){
 
     }
 
-    const adx = (total / period) / atr * 10;
+    const adx = ((total / period) / atr) * 25;
 
-    return Math.min(50, adx);
+    return Math.min(60, Math.max(10, adx));
 
 }
 
