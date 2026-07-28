@@ -324,11 +324,11 @@ else if(
 // SELL
 else if(
 
-    bearish >= 4 &&
-    score <= -30 &&
+    bearish >= 3 &&
+    score <= -20 &&
     macd < 0 &&
     rsi <= 50 &&
-    adx >= 10 && 
+    adx >= 10 &&
     trend4h === "Bearish"
 
 ){
