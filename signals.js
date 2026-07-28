@@ -336,8 +336,6 @@ else if(
 
 // SELL
 
-console.log("SELL TRIGGERED");
-     
 else if(
 
     bearish >= 3 &&
@@ -349,6 +347,8 @@ else if(
 
 ){
 
+    console.log("SELL TRIGGERED");
+     
     signal = "SELL";
 
 }
