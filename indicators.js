@@ -165,25 +165,30 @@ function calculateVolume(candles){
 
 function getTrend(ema9, ema21, ema50, ema200){
 
-    if(
-        ema9 > ema21 &&
-        ema21 > ema50 &&
-        ema50 > ema200
-    ){
+    let bullish = 0;
+    let bearish = 0;
+
+    if(ema9 > ema21) bullish++;
+    else bearish++;
+
+    if(ema21 > ema50) bullish++;
+    else bearish++;
+
+    if(ema50 > ema200) bullish++;
+    else bearish++;
+
+    if(bullish >= 2){
         return "Bullish";
     }
 
-    if(
-        ema9 < ema21 &&
-        ema21 < ema50 &&
-        ema50 < ema200
-    ){
+    if(bearish >= 2){
         return "Bearish";
     }
 
     return "Sideways";
 
 }
+
 // =============================
 // ADX (Trend Strength)
 // =============================
