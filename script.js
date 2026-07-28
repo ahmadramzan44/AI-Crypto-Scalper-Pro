@@ -556,6 +556,29 @@ const entryHigh =
 document.getElementById("entryZone").innerText =
 entryLow + " - " + entryHigh;
 
+// Entry Price
+let entryPrice = "-";
+
+if(
+    finalSignal === "BUY" ||
+    finalSignal === "STRONG BUY"
+){
+
+    entryPrice = entryLow.toFixed(2);
+
+}
+else if(
+    finalSignal === "SELL" ||
+    finalSignal === "STRONG SELL"
+){
+
+    entryPrice = entryHigh.toFixed(2);
+
+}
+
+document.getElementById("entry").innerText =
+entryPrice;
+    
 const volume =
 calculateVolume(candles);
 
@@ -1358,40 +1381,50 @@ function calculateRisk(price, atr, signal){
 // ATR Calculation
 // =============================
 
-function calculateATR(candles){
+function calculateRisk(price, atr, signal){
 
-    if(!candles || candles.length < 15){
+    let stopLoss = price;
+    let tp1 = price;
+    let tp2 = price;
+    let tp3 = price;
+    let rr = "1 : 3";
 
-        return 1;
+    if(signal.includes("BUY")){
+
+        stopLoss = price - (atr * 1.5);
+
+        tp1 = price + (atr * 1.5);
+        tp2 = price + (atr * 3);
+        tp3 = price + (atr * 4.5);
+
+    }
+    else if(signal.includes("SELL")){
+
+        stopLoss = price + (atr * 1.5);
+
+        tp1 = price - (atr * 1.5);
+        tp2 = price - (atr * 3);
+        tp3 = price - (atr * 4.5);
+
+    }
+    else{
+
+        stopLoss = "-";
+        tp1 = "-";
+        tp2 = "-";
+        tp3 = "-";
+        rr = "-";
 
     }
 
-    let trs = [];
+    return{
 
-    for(let i = 1; i < candles.length; i++){
+        stopLoss,
+        tp1,
+        tp2,
+        tp3,
+        rr
 
-        const high = parseFloat(candles[i][2]);
-        const low = parseFloat(candles[i][3]);
-        const prevClose = parseFloat(candles[i - 1][4]);
-
-        const tr = Math.max(
-            high - low,
-            Math.abs(high - prevClose),
-            Math.abs(low - prevClose)
-        );
-
-        trs.push(tr);
-
-    }
-
-    const period = 14;
-
-    const recent =
-    trs.slice(-period);
-
-    const atr =
-    recent.reduce((a,b)=>a+b,0) / period;
-
-    return atr;
+    };
 
 }
