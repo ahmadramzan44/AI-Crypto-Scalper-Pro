@@ -5,6 +5,9 @@
 // =====================================
 
 function generateSignal(
+     price,
+    support,
+    resistance,
     ema9,
     ema21,
     ema50,
@@ -344,19 +347,20 @@ if(signal === "SELL"){
 
 }
 
-// Candlestick Pattern Bonus
-if(signal === "BUY" && pattern === "Bullish Engulfing"){
+// Pattern Bonus
+if(pattern === "Bullish Engulfing"){
 
+    score += 10;
     confidence += 5;
 
 }
 
-if(signal === "SELL" && pattern === "Bearish Engulfing"){
+if(pattern === "Bearish Engulfing"){
 
+    score -= 10;
     confidence += 5;
 
 }
-
 // ATR Filter
 if(atr < 0.5){
 
