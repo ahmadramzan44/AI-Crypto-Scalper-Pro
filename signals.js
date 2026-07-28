@@ -431,7 +431,13 @@ if(signal === "WAIT"){
 
     confidence = Math.min(confidence,40);
 
-}    
+} 
+
+console.log("Score:", score);
+console.log("Bullish:", bullish);
+console.log("Bearish:", bearish);
+console.log("Signal:", signal);
+     
 confidence = Math.max(0, Math.min(100, confidence));
 
 return{
