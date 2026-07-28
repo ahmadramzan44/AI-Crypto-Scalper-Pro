@@ -273,8 +273,8 @@ const sellTrendConfirmed =
 // BUY
 if(
 
-    bullish >= 4 &&
-    score >= 35 &&
+    bullish >= 3 &&
+    score >= 25 &&
     macd > 0 &&
     trendConfirmed
 
