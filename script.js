@@ -556,29 +556,6 @@ const entryHigh =
 document.getElementById("entryZone").innerText =
 entryLow + " - " + entryHigh;
 
-// Entry Price
-let entryPrice = "-";
-
-if(
-    finalSignal === "BUY" ||
-    finalSignal === "STRONG BUY"
-){
-
-    entryPrice = entryLow.toFixed(2);
-
-}
-else if(
-    finalSignal === "SELL" ||
-    finalSignal === "STRONG SELL"
-){
-
-    entryPrice = entryHigh.toFixed(2);
-
-}
-
-document.getElementById("entry").innerText =
-entryPrice;
-    
 const volume =
 calculateVolume(candles);
 
@@ -826,6 +803,25 @@ atr
 
 document.getElementById("signal").innerText =
 result.signal;
+// Entry Price
+let entryPrice = "-";
+
+if(
+    finalSignal === "BUY" ||
+    finalSignal === "STRONG BUY"
+){
+    entryPrice = entryLow;
+}
+else if(
+    finalSignal === "SELL" ||
+    finalSignal === "STRONG SELL"
+){
+    entryPrice = entryHigh;
+}
+
+document.getElementById("entry").innerText =
+entryPrice;
+    
 let finalSignal = result.signal;
 
 // =============================
