@@ -259,24 +259,43 @@ else{
 
     score += 10;
 
-}    
+}   
+     
 // =============================
-// Final Signal Decision
+// Final Signal Decision V3
 // =============================
 
 const trendConfirmed =
-    (trend1h === "Bullish" && trend4h === "Bullish");
+(trend1h === "Bullish" && trend4h === "Bullish");
 
 const sellTrendConfirmed =
-    (trend1h === "Bearish" && trend4h === "Bearish");
+(trend1h === "Bearish" && trend4h === "Bearish");
 
-// BUY
+// STRONG BUY
 if(
 
-    bullish >= 3 &&
-    score >= 25 &&
+    bullish >= 6 &&
+    score >= 55 &&
     macd > 0 &&
+    rsi >= 55 &&
+    adx >= 25 &&
+    volume >= 1 &&
     trendConfirmed
+
+){
+
+    signal = "STRONG BUY";
+
+}
+
+// BUY
+else if(
+
+    bullish >= 4 &&
+    score >= 30 &&
+    macd > 0 &&
+    rsi >= 50 &&
+    trend4h === "Bullish"
 
 ){
 
@@ -284,15 +303,31 @@ if(
 
 }
 
+// STRONG SELL
+else if(
+
+    bearish >= 6 &&
+    score <= -55 &&
+    macd < 0 &&
+    rsi <= 45 &&
+    adx >= 25 &&
+    volume >= 1 &&
+    sellTrendConfirmed
+
+){
+
+    signal = "STRONG SELL";
+
+}
 
 // SELL
 else if(
 
-    bearish >= 3 &&
-    score <= -25 &&
+    bearish >= 4 &&
+    score <= -30 &&
     macd < 0 &&
-    volume >= 1 &&
-    sellTrendConfirmed
+    rsi <= 50 &&
+    trend4h === "Bearish"
 
 ){
 
@@ -305,7 +340,7 @@ else{
     signal = "WAIT";
 
 }
-// =============================
+     // =============================
 // AI Confidence Engine V2
 // =============================
 
