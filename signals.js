@@ -288,12 +288,10 @@ if(
 // SELL
 else if(
 
-    bearish >= 6 &&
-    bullish <= 2 &&
+    bearish >= 3 &&
     score <= -25 &&
-    adx >= 25 &&
     macd < 0 &&
-    volume >= 1.2 &&
+    volume >= 1 &&
     sellTrendConfirmed
 
 ){
@@ -306,8 +304,7 @@ else{
 
     signal = "WAIT";
 
-}  
-    
+}
 // =============================
 // AI Confidence Engine V2
 // =============================
