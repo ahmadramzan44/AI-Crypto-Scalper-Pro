@@ -213,7 +213,34 @@ else if(ema50_1h < ema200_1h){
 
 }
    
-const trend4h = trend1h;
+// =============================
+// 4H Trend
+// =============================
+
+const candles4h =
+await getCandles(coin,"4h",200);
+
+const closes4h =
+candles4h.map(c => parseFloat(c[4]));
+
+const ema50_4h =
+getEMA(closes4h,50);
+
+const ema200_4h =
+getEMA(closes4h,200);
+
+let trend4h = "Sideways";
+
+if(ema50_4h > ema200_4h){
+
+    trend4h = "Bullish";
+
+}
+else if(ema50_4h < ema200_4h){
+
+    trend4h = "Bearish";
+
+}
 const pattern =
 detectPattern(candles);
 const atr = 1;        
