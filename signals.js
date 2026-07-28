@@ -333,10 +333,7 @@ else if(
     signal = "STRONG SELL";
 
 }
-console.log("Score:", score);
-console.log("Bullish:", bullish);
-console.log("Bearish:", bearish);
-console.log("Pattern:", pattern);
+
 // SELL
 
 console.log("SELL TRIGGERED");
@@ -361,6 +358,12 @@ else{
     signal = "WAIT";
 
 }
+
+console.log("Score:", score);
+console.log("Bullish:", bullish);
+console.log("Bearish:", bearish);
+console.log("Pattern:", pattern);
+     
      // =============================
 // AI Confidence Engine V2
 // =============================
