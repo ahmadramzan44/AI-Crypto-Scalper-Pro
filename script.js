@@ -243,7 +243,8 @@ else if(ema50_4h < ema200_4h){
 }
 const pattern =
 detectPattern(candles);
-const atr = 1;        
+const atr =
+calculateATR(candles);        
        
 const result =
 generateSignal(
@@ -1350,5 +1351,47 @@ function calculateRisk(price, atr, signal){
         rr: "1 : 3"
 
     };
+
+}
+
+// =============================
+// ATR Calculation
+// =============================
+
+function calculateATR(candles){
+
+    if(!candles || candles.length < 15){
+
+        return 1;
+
+    }
+
+    let trs = [];
+
+    for(let i = 1; i < candles.length; i++){
+
+        const high = parseFloat(candles[i][2]);
+        const low = parseFloat(candles[i][3]);
+        const prevClose = parseFloat(candles[i - 1][4]);
+
+        const tr = Math.max(
+            high - low,
+            Math.abs(high - prevClose),
+            Math.abs(low - prevClose)
+        );
+
+        trs.push(tr);
+
+    }
+
+    const period = 14;
+
+    const recent =
+    trs.slice(-period);
+
+    const atr =
+    recent.reduce((a,b)=>a+b,0) / period;
+
+    return atr;
 
 }
