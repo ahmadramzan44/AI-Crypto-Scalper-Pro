@@ -564,6 +564,14 @@ entryLow + " - " + entryHigh;
 const volume =
 calculateVolume(candles);
 
+const avgVolume =
+candles
+.slice(-20)
+.reduce((sum, c) => sum + parseFloat(c[5]), 0) / 20;
+
+const volumeRatio =
+avgVolume > 0 ? volume / avgVolume : 0;
+    
 const adx =
 calculateADX(candles);
 
