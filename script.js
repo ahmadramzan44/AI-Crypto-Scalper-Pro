@@ -387,11 +387,8 @@ if(filter === "STRONG" &&
 class="${item.coin === bestCoin.coin ? 'bestCoin' : ''}"
 onclick="selectCoin('${item.coin}')"
 style="cursor:pointer;">
-onclick="selectCoin('${item.coin}')"
-style="cursor:pointer">
-    <td
-style="cursor:pointer;color:#00e5ff;font-weight:bold;"
-onclick="selectCoin('${item.coin}')">
+<td
+style="cursor:pointer;color:#00e5ff;font-weight:bold;">
 
 ${item.coin}
 
@@ -806,24 +803,6 @@ let finalSignal = result.signal;
 document.getElementById("signal").innerText =
 finalSignal;
 
-// Entry Price
-let entryPrice = "-";
-
-if(
-    finalSignal === "BUY" ||
-    finalSignal === "STRONG BUY"
-){
-    entryPrice = entryLow;
-}
-else if(
-    finalSignal === "SELL" ||
-    finalSignal === "STRONG SELL"
-){
-    entryPrice = entryHigh;
-}
-
-document.getElementById("entry").innerText =
-entryPrice;
 // =============================
 // Multi-Timeframe Confirmation
 // =============================
@@ -880,6 +859,25 @@ else if(finalSignal === "STRONG SELL"){
 }
 document.getElementById("signal").innerText =
 finalSignal;
+
+// Entry Price
+let entryPrice = "-";
+
+if(
+    finalSignal === "BUY" ||
+    finalSignal === "STRONG BUY"
+){
+    entryPrice = entryLow;
+}
+else if(
+    finalSignal === "SELL" ||
+    finalSignal === "STRONG SELL"
+){
+    entryPrice = entryHigh;
+}
+
+document.getElementById("entry").innerText =
+entryPrice;
 
 let aiScore = result.confidence;
 
