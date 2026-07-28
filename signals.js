@@ -115,9 +115,9 @@ else if(rsi > 65 && rsi <= 70){
 }
 else if(rsi >= 45 && rsi < 50){
 
-    bearish++;
-    score -= 5;
-    sellReasons.push("Weak RSI");
+    bullish++;
+    score += 5;
+    buyReasons.push("RSI Recovering");
 
 }
 else if(rsi >= 35 && rsi < 45){
@@ -239,8 +239,8 @@ else if(volume >= 0.8){
 }
 else{
 
-    score -= 5;
-    sellReasons.push("Very Low Volume");
+    score += 0;
+    buyReasons.push("Normal Crypto Volume");
 
 }
 
