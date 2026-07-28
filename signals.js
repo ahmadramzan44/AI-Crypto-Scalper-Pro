@@ -325,7 +325,7 @@ else if(
 else if(
 
     bearish >= 3 &&
-    score <= -20 &&
+    score <= -10 &&
     macd < 0 &&
     rsi <= 50 &&
     adx >= 10 &&
