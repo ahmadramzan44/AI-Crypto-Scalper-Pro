@@ -362,7 +362,7 @@ console.log("Pattern:", pattern);
 // AI Confidence Engine V2
 // =============================
 
-confidence = Math.abs(score);
+confidence = 50 + (score / 2);
 
 // Strong Trend Bonus
 if(adx >= 35){
@@ -379,9 +379,9 @@ if(volume >= 1.5){
 }
 
 // RSI Safety Filter
-if(rsi > 75){
+if(rsi > 80){
 
-    confidence -= 20;
+    confidence -= 10;
 
 }
 
@@ -392,9 +392,9 @@ if(rsi < 25){
 }
 
 // Low Volume Filter
-if(volume < 0.5){
+if(volume < 0.10){
 
-    confidence -= 20;
+    confidence -= 10;
 
 }
      
