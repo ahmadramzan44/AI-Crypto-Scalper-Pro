@@ -290,8 +290,6 @@ if(
 bullish >= 6 &&
 score >= 55 &&
 macd > 0 &&
-rsi >= 55 &&
-rsi < 75 &&
 adx >= 25 &&
 volume >= 0.5 &&
 trendConfirmed
@@ -308,8 +306,6 @@ else if(
 bullish >= 4 &&
 score >= 30 &&
 macd > 0 &&
-rsi >= 45 &&
-rsi < 75 &&
 adx >= 10 &&
 volume >= 0.5 &&
 trend4h === "Bullish"
@@ -326,8 +322,6 @@ else if(
     bearish >= 6 &&
     score <= -55 &&
     macd < 0 &&
-    rsi <= 45 &&
-    rsi <= 25 &&
     adx >= 25 &&
     volume >= 1 &&
     sellTrendConfirmed
@@ -345,8 +339,6 @@ else if(
     bearish >= 3 &&
     score <= -10 &&
     macd < 0 &&
-    rsi <= 50 &&
-    rsi <= 25 &&
     adx >= 10 &&
     trend4h === "Bearish"
 
