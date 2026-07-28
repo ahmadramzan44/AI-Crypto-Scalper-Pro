@@ -298,8 +298,12 @@ if(
 
 // Pattern Bonus
 if(
-    pattern === "Bullish Engulfing" ||
-    pattern === "Bearish Engulfing"
+pattern === "Bullish Engulfing" ||
+pattern === "Bearish Engulfing" ||
+pattern === "Hammer" ||
+pattern === "Shooting Star" ||
+pattern === "Morning Star" ||
+pattern === "Evening Star"
 ){
     ai += 10;
 }
@@ -877,8 +881,11 @@ if(
 // Pattern Bonus
 
 if(pattern === "Bullish Engulfing" ||
-pattern === "Bearish Engulfing"){
-
+pattern === "Bearish Engulfing" ||
+pattern === "Hammer" ||
+pattern === "Shooting Star" ||
+pattern === "Morning Star" ||
+pattern === "Evening Star"
     aiScore += 10;
 
 }
@@ -1067,7 +1074,11 @@ document.getElementById("checkVolume").innerText =
 document.getElementById("checkPattern").innerText =
 (
 pattern === "Bullish Engulfing" ||
-pattern === "Bearish Engulfing"
+pattern === "Bearish Engulfing" ||
+pattern === "Hammer" ||
+pattern === "Shooting Star" ||
+pattern === "Morning Star" ||
+pattern === "Evening Star"
 ? "✅ Pattern"
 : "❌ Pattern"
 );
@@ -1088,7 +1099,11 @@ reason += adx >= 25
 
 reason += (
 pattern === "Bullish Engulfing" ||
-pattern === "Bearish Engulfing"
+pattern === "Bearish Engulfing" ||
+pattern === "Hammer" ||
+pattern === "Shooting Star" ||
+pattern === "Morning Star" ||
+pattern === "Evening Star"
 )
 ? "✅ Pattern Confirmed"
 : "❌ No Strong Pattern";
@@ -1290,5 +1305,48 @@ function detectPattern(candles){
     }
 
     return "None";
+
+}
+
+// =============================
+// Risk Management Engine
+// =============================
+
+function calculateRisk(price, atr, signal){
+
+    let stopLoss = price;
+    let tp1 = price;
+    let tp2 = price;
+    let tp3 = price;
+    let rr = "1 : 0";
+
+    if(signal.includes("BUY")){
+
+        stopLoss = price - (atr * 1.5);
+
+        tp1 = price + (atr * 1.5);
+        tp2 = price + (atr * 3);
+        tp3 = price + (atr * 4.5);
+
+    }
+    else if(signal.includes("SELL")){
+
+        stopLoss = price + (atr * 1.5);
+
+        tp1 = price - (atr * 1.5);
+        tp2 = price - (atr * 3);
+        tp3 = price - (atr * 4.5);
+
+    }
+
+    return{
+
+        stopLoss: stopLoss.toFixed(2),
+        tp1: tp1.toFixed(2),
+        tp2: tp2.toFixed(2),
+        tp3: tp3.toFixed(2),
+        rr: "1 : 3"
+
+    };
 
 }
