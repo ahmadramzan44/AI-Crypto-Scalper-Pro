@@ -327,7 +327,7 @@ else if(
     score <= -55 &&
     macd < 0 &&
     rsi <= 45 &&
-    rsi > 25
+    rsi <= 25 &&
     adx >= 25 &&
     volume >= 1 &&
     sellTrendConfirmed
@@ -346,7 +346,7 @@ else if(
     score <= -10 &&
     macd < 0 &&
     rsi <= 50 &&
-    rsi > 25
+    rsi <= 25 &&
     adx >= 10 &&
     trend4h === "Bearish"
 
