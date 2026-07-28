@@ -1176,8 +1176,10 @@ const risk =
 calculateRisk(
 price,
 atr,
-result.signal
+finalSignal
 );
+console.log("Signal:", finalSignal);
+console.log("Risk:", risk);
 
 document.getElementById("sl").innerText =
 risk.stopLoss;
