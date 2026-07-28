@@ -168,8 +168,7 @@ else if(adx >= 20){
 }
 else{
 
-    bearish++;
-    score -= 20;
+    score -= 5;
     sellReasons.push("Weak Trend - No Momentum");
 
 }
@@ -240,8 +239,7 @@ else if(volume >= 0.8){
 }
 else{
 
-    bearish++;
-    score -= 15;
+    score -= 5;
     sellReasons.push("Very Low Volume");
 
 }
@@ -252,7 +250,7 @@ else{
 
 if(trend1h !== trend4h){
 
-    score -= 15;
+    score -= 5;
 
     buyReasons.push("MTF Conflict");
 
@@ -275,12 +273,9 @@ const sellTrendConfirmed =
 // BUY
 if(
 
-    bullish >= 6 &&
-    bearish <= 2 &&
-    score >= 75 &&
-    adx >= 25 &&
+    bullish >= 4 &&
+    score >= 35 &&
     macd > 0 &&
-    volume >= 1.2 &&
     trendConfirmed
 
 ){
@@ -289,6 +284,25 @@ if(
 
 }
 
+// SELL
+else if(
+
+    bearish >= 4 &&
+    score <= -35 &&
+    macd < 0 &&
+    sellTrendConfirmed
+
+){
+
+    signal = "SELL";
+
+}
+
+else{
+
+    signal = "WAIT";
+
+}
 // SELL
 else if(
 
