@@ -801,8 +801,11 @@ pattern,
 atr
 );
 
+let finalSignal = result.signal;
+
 document.getElementById("signal").innerText =
-result.signal;
+finalSignal;
+
 // Entry Price
 let entryPrice = "-";
 
@@ -821,9 +824,6 @@ else if(
 
 document.getElementById("entry").innerText =
 entryPrice;
-    
-let finalSignal = result.signal;
-
 // =============================
 // Multi-Timeframe Confirmation
 // =============================
