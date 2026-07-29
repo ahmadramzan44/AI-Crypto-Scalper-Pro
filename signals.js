@@ -213,31 +213,34 @@ else{
 
 }
     
-   // =============================
+ 
+     // =============================
 // Volume
 // =============================
 
-if(volume >= 0.80){
+if(volume >= 0.50){
 
     bullish++;
     score += 10;
     buyReasons.push("High Volume");
 
 }
-else if(volume >= 0.50){
+else if(volume >= 0.20){
 
     bullish++;
     score += 5;
     buyReasons.push("Healthy Volume");
 
 }
-else if(volume >= 0.20){
+else if(volume >= 0.10){
 
     score += 0;
+    buyReasons.push("Normal Volume");
 
 }
 else{
 
+    bearish++;
     score -= 5;
     sellReasons.push("Very Low Volume");
 
@@ -553,11 +556,15 @@ console.log("Signal:", signal);
      
 confidence = Math.max(0, Math.min(100, confidence));
 
-return{
+return {
 
     signal,
-
-    confidence
+    confidence,
+    score,
+    bullish,
+    bearish,
+    buyReasons,
+    sellReasons
 
 };
 
