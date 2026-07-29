@@ -453,12 +453,12 @@ else if(
 // STRONG SELL
 else if(
 
-    bearish >= 5 &&
-    score <= -40 &&
-    macd < 0 &&
-    adx >= 20 &&
-    volume >= 0.15 &&
-    trend4h === "Bearish"
+bearish >= 5 &&
+score <= -35 &&
+macd <= 0 &&
+adx >= 20 &&
+volume >= 0.15 &&
+trend4h === "Bearish"
 
 ){
 
@@ -480,12 +480,12 @@ else if(
 // SELL
 else if(
 
-    bearish >= 4 &&
-    score <= -20 &&
-    macd < 0 &&
-    adx >= 15 &&
-    volume >= 0.10 &&
-    trend4h === "Bearish"
+bearish >= 4 &&
+score <= -15 &&
+macd <= 0 &&
+adx >= 15 &&
+volume >= 0.10 &&
+trend4h === "Bearish"
 
 ){
 
@@ -499,6 +499,8 @@ else if(
         volume,
         trend4h
     }); 
+
+    console.log("Exact score =", score.toFixed(10));
      
     console.log("✅ SELL PASSED");
 
