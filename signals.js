@@ -21,7 +21,19 @@ function generateSignal(
     pattern,
     atr
 ){
-
+console.log("====== INPUTS ======");
+console.log({
+    volume,
+    volumeType: typeof volume,
+    rsi,
+    macd,
+    ema9,
+    ema21,
+    ema50,
+    ema200,
+    trend1h,
+    trend4h
+});
 console.log("===== generateSignal CALLED =====");
 console.log("Volume received:", volume);
 console.log("Volume >= 0.10 =", volume >= 0.10);
