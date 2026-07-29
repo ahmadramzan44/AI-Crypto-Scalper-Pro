@@ -46,7 +46,13 @@ let sellReasons = [];
 // =============================
 // EMA Trend Structure
 // =============================
-
+console.log("EMA Values");
+console.log({
+    ema9,
+    ema21,
+    ema50,
+    ema200
+});
 // EMA 9 vs EMA 21
 if(ema9 > ema21){
 
@@ -98,7 +104,12 @@ else{
  // =============================
 // RSI
 // =============================
-
+console.log("After RSI");
+console.log({
+    score,
+    bullish,
+    bearish
+});
 if(rsi >= 55 && rsi <= 65){
 
     bullish++;
@@ -183,7 +194,12 @@ else{
 // =============================
 // MACD
 // =============================
-
+console.log("After MACD");
+console.log({
+    score,
+    bullish,
+    bearish
+});
 if(macd > 1){
 
     bullish++;
@@ -217,7 +233,12 @@ else{
      // =============================
 // Volume
 // =============================
-
+console.log("After Volume");
+console.log({
+    score,
+    bullish,
+    bearish
+});
 if(volume >= 0.50){
 
     bullish++;
@@ -249,7 +270,12 @@ else{
 // =============================
 // Pattern Bonus
 // =============================
-
+console.log("After Pattern");
+console.log({
+    score,
+    bullish,
+    bearish
+});
 if(pattern === "Bullish Engulfing"){
 
     bullish++;
