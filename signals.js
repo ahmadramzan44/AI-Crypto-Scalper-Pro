@@ -518,11 +518,28 @@ console.log("Bullish:", bullish);
 console.log("Bearish:", bearish);
 console.log("Pattern:", pattern);
      
-     // =============================
+// =============================
 // AI Confidence Engine V2
 // =============================
 
 confidence = 50 + (score / 2);
+
+// Strong Signal Bonus
+if(signal === "STRONG BUY" || signal === "STRONG SELL"){
+
+    confidence += 35;
+
+}
+else if(signal === "BUY" || signal === "SELL"){
+
+    confidence += 20;
+
+}
+else{
+
+    confidence -= 20;
+
+}
 
 // Strong Trend Bonus
 if(adx >= 35){
@@ -532,96 +549,55 @@ if(adx >= 35){
 }
 
 // High Volume Bonus
-if(volume >= 1.5){
+if(volume >= 0.30){
 
     confidence += 5;
 
 }
 
-// RSI Safety Filter
+// RSI Safety
 if(rsi > 80){
 
     confidence -= 10;
 
 }
 
-if(rsi < 25){
-
-    confidence -= 20;
-
-}
-
-// Low Volume Filter
-if(volume < 0.10){
+if(rsi < 20){
 
     confidence -= 10;
 
 }
-     
-// Multi Timeframe Confirmation
-if(signal === "BUY"){
 
-    if(trend1h === "Bullish") confidence += 5;
-    if(trend4h === "Bullish") confidence += 5;
+// Multi-Timeframe Confirmation (sirf 1H)
+if(signal.includes("BUY") && trend1h === "Bullish"){
 
-}
-
-if(signal === "SELL"){
-
-    if(trend1h === "Bearish") confidence += 5;
-    if(trend4h === "Bearish") confidence += 5;
+    confidence += 5;
 
 }
 
+if(signal.includes("SELL") && trend1h === "Bearish"){
+
+    confidence += 5;
+
+}
 
 // ATR Filter
 if(atr < 0.5){
 
-    confidence -= 10;
+    confidence -= 5;
 
 }
 
-// Support / Resistance Filter
-if(signal === "BUY" && resistance > 0){
-
-    const distance = ((resistance - price) / price) * 100;
-
-    if(distance < 1){
-
-        confidence -= 15;
-
-    }
-
-}
-
-if(signal === "SELL" && support > 0){
-
-    const distance = ((price - support) / price) * 100;
-
-    if(distance < 1){
-
-        confidence -= 15;
-
-    }
-
-}
-
-// =============================
-// WAIT Confidence Filter
-// =============================
-
+// WAIT Filter
 if(signal === "WAIT"){
 
     confidence = Math.min(confidence,40);
 
-} 
+}
 
-console.log("Score:", score);
-console.log("Bullish:", bullish);
-console.log("Bearish:", bearish);
-console.log("Signal:", signal);
-     
 confidence = Math.max(0, Math.min(100, confidence));
+
+console.log("Confidence =", confidence);
 
 return {
 
@@ -634,5 +610,4 @@ return {
     sellReasons
 
 };
-
 }
