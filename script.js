@@ -182,16 +182,8 @@ calculateMACD(closes);
 const macd =
 macdData.macd;
 
-const volume =
-calculateVolume(candles);
-
-const avgVolume =
-candles
-.slice(-20)
-.reduce((sum, c) => sum + parseFloat(c[5]), 0) / 20;
-
 const volumeRatio =
-volume / avgVolume;
+calculateVolume(candles);
         
 const adx =
 calculateADX(candles);
