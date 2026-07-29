@@ -21,7 +21,7 @@ function generateSignal(
     pattern,
     atr
 ){
-
+console.log("volume inside signal =", volume);
 let score = 0;
 
 let confidence = 0;
