@@ -810,9 +810,6 @@ atr
 
 let finalSignal = result.signal;
 
-document.getElementById("signal").innerText =
-finalSignal;
-
 // =============================
 // Multi-Timeframe Confirmation
 // =============================
@@ -845,6 +842,9 @@ else if(result.signal === "SELL" && trend1h === "Bearish"){
     finalSignal = "STRONG SELL";
 
 }
+
+document.getElementById("signal").innerText = finalSignal;
+
 if(finalSignal === "STRONG BUY"){
 
     sendNotification(
