@@ -462,6 +462,15 @@ else if(
 
 ){
 
+    console.log("SELL CHECK", {
+    bearish,
+    score,
+    macd,
+    adx,
+    volume,
+    trend4h
+}); 
+     
     console.log("✅ STRONG SELL PASSED");
 
     signal = "STRONG SELL";
@@ -480,6 +489,17 @@ else if(
 
 ){
 
+    console.log(">>> SELL BLOCK ENTERED"); 
+
+    console.log("SELL CHECK", {
+        bearish,
+        score,
+        macd,
+        adx,
+        volume,
+        trend4h
+    }); 
+     
     console.log("✅ SELL PASSED");
 
     signal = "SELL";
