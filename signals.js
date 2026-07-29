@@ -22,12 +22,12 @@ function generateSignal(
     atr
 ){
 
-console.log("===== generateSignal CALLED =====", price);     
-console.log("volume inside signal =", volume);
+console.log("===== generateSignal CALLED =====");
 console.log("Volume received:", volume);
-console.log("Volume >= 0.10 ?", volume >= 0.10);
-console.log("Volume >= 0.15 ?", volume >= 0.15);
-console.log("Type of volume:", typeof volume);
+console.log("Volume >= 0.10 =", volume >= 0.10);
+console.log("Volume >= 0.15 =", volume >= 0.15);
+console.log("typeof volume =", typeof volume);
+
      
 let score = 0;
 
