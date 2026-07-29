@@ -22,6 +22,8 @@ function generateSignal(
     atr
 ){
 console.log("volume inside signal =", volume);
+console.log("Volume received:", volume);
+     
 let score = 0;
 
 let confidence = 0;
