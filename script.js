@@ -253,7 +253,9 @@ const pattern =
 detectPattern(candles);
 const atr =
 calculateATR(candles);        
-console.log("volumeRatio before signal =", volumeRatio);       
+
+console.log("volumeRatio before signal =", volumeRatio); 
+        
 const result =
 generateSignal(
 price,
