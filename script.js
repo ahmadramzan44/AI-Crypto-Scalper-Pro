@@ -62,6 +62,8 @@ function login(){
 
 function analyzeCoin(){
 
+console.log("===== analyzeCoin START =====");
+   
     const symbol =
         document.getElementById("coin")
         .value
@@ -132,6 +134,8 @@ function loadHistory(){
 
 }
 async function runScanner(){
+
+console.log("===== runScanner START =====");
 
     const body =
     document.getElementById("scannerBody");
