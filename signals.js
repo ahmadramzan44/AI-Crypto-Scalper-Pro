@@ -422,7 +422,7 @@ if(
     macd > 0 &&
     adx >= 20 &&
     volume >= 0.15 &&
-    trend4h === "Bullish"
+    trend1h === "Bullish"
 
 ){
 
@@ -440,7 +440,7 @@ else if(
     macd > 0 &&
     adx >= 15 &&
     volume >= 0.10 &&
-    trend4h === "Bullish"
+    trend1h === "Bullish"
 
 ){
 
@@ -457,7 +457,7 @@ bearish >= 5 &&
 score <= -35 &&
 macd <= 0 &&
 adx >= 20 &&
-trend4h === "Bearish"
+trend1h === "Bearish"
 
 ){
 
@@ -483,7 +483,7 @@ bearish >= 4 &&
 score <= -15 &&
 macd <= 0 &&
 adx >= 15 &&
-trend4h === "Bearish"
+trend1h === "Bearish"
 
 ){
 
