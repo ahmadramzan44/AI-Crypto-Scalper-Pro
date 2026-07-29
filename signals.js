@@ -210,39 +210,32 @@ else{
 // Volume
 // =============================
 
-if(volume >= 2){
-
-    bullish++;
-    score += 15;
-    buyReasons.push("Very High Volume");
-
-}
-else if(volume >= 1.5){
+if(volume >= 0.80){
 
     bullish++;
     score += 10;
     buyReasons.push("High Volume");
 
 }
-else if(volume >= 1.2){
+else if(volume >= 0.50){
 
     bullish++;
     score += 5;
     buyReasons.push("Healthy Volume");
 
 }
-else if(volume >= 0.8){
+else if(volume >= 0.20){
 
-    score -= 5;
-    sellReasons.push("Low Volume");
+    score += 0;
 
 }
 else{
 
-    score += 0;
-    buyReasons.push("Normal Crypto Volume");
+    score -= 5;
+    sellReasons.push("Very Low Volume");
 
 }
+     
 // =============================
 // Pattern Bonus
 // =============================
@@ -319,7 +312,7 @@ const sellTrendConfirmed =
 if(
 
     bullish >= 5 &&
-    score >= 50 &&
+    score >= 40 &&
     macd > 0 &&
     adx >= 20 &&
     volume >= 0.15 &&
@@ -335,7 +328,7 @@ if(
 else if(
 
     bullish >= 4 &&
-    score >= 25 &&
+    score >= 20 &&
     macd > 0 &&
     adx >= 15 &&
     volume >= 0.10 &&
@@ -351,7 +344,7 @@ else if(
 else if(
 
     bearish >= 5 &&
-    score <= -50 &&
+    score <= -40 &&
     macd < 0 &&
     adx >= 20 &&
     volume >= 0.15 &&
@@ -367,7 +360,7 @@ else if(
 else if(
 
     bearish >= 4 &&
-    score <= -25 &&
+    score <= -20 &&
     macd < 0 &&
     adx >= 15 &&
     volume >= 0.10 &&
