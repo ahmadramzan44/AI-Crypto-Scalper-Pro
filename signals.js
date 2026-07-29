@@ -46,12 +46,10 @@ let sellReasons = [];
 // =============================
 // EMA Trend Structure
 // =============================
-console.log("EMA Values");
-console.log({
-    ema9,
-    ema21,
-    ema50,
-    ema200
+console.log("ema9 =", ema9);
+console.log("ema21 =", ema21);
+console.log("ema50 =", ema50);
+console.log("ema200 =", ema200);
 });
 // EMA 9 vs EMA 21
 if(ema9 > ema21){
