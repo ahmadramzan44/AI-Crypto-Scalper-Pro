@@ -27,7 +27,7 @@ console.log("Volume received:", volume);
 console.log("Volume >= 0.10 =", volume >= 0.10);
 console.log("Volume >= 0.15 =", volume >= 0.15);
 console.log("typeof volume =", typeof volume);
-
+console.trace("generateSignal called from");
      
 let score = 0;
 
