@@ -21,6 +21,8 @@ function generateSignal(
     pattern,
     atr
 ){
+
+console.log("===== generateSignal CALLED =====", price);     
 console.log("volume inside signal =", volume);
 console.log("Volume received:", volume);
      
