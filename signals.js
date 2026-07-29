@@ -329,6 +329,34 @@ console.log({
     strongBuyVolume: volume >= 0.15,
     strongBuyTrend: trend4h === "Bullish"
 });
+
+console.log({
+    buyBullish: bullish >= 4,
+    buyScore: score >= 20,
+    buyMacd: macd > 0,
+    buyAdx: adx >= 15,
+    buyVolume: volume >= 0.10,
+    buyTrend: trend4h === "Bullish"
+});
+
+  console.log({
+    strongSellBearish: bearish >= 5,
+    strongSellScore: score <= -40,
+    strongSellMacd: macd < 0,
+    strongSellAdx: adx >= 20,
+    strongSellVolume: volume >= 0.15,
+    strongSellTrend: trend4h === "Bearish"
+});
+
+console.log({
+    sellBearish: bearish >= 4,
+    sellScore: score <= -20,
+    sellMacd: macd < 0,
+    sellAdx: adx >= 15,
+    sellVolume: volume >= 0.10,
+    sellTrend: trend4h === "Bearish"
+});     
+     
 // STRONG BUY
 if(
 
@@ -346,14 +374,7 @@ if(
     signal = "STRONG BUY";
 
 }
-console.log({
-    buyBullish: bullish >= 4,
-    buyScore: score >= 20,
-    buyMacd: macd > 0,
-    buyAdx: adx >= 15,
-    buyVolume: volume >= 0.10,
-    buyTrend: trend4h === "Bullish"
-});
+
 // BUY
 else if(
 
@@ -371,14 +392,7 @@ else if(
     signal = "BUY";
 
 }
-console.log({
-    strongSellBearish: bearish >= 5,
-    strongSellScore: score <= -40,
-    strongSellMacd: macd < 0,
-    strongSellAdx: adx >= 20,
-    strongSellVolume: volume >= 0.15,
-    strongSellTrend: trend4h === "Bearish"
-});
+
 // STRONG SELL
 else if(
 
@@ -396,14 +410,7 @@ else if(
     signal = "STRONG SELL";
 
 }
-console.log({
-    sellBearish: bearish >= 4,
-    sellScore: score <= -20,
-    sellMacd: macd < 0,
-    sellAdx: adx >= 15,
-    sellVolume: volume >= 0.10,
-    sellTrend: trend4h === "Bearish"
-});
+
 // SELL
 else if(
 
