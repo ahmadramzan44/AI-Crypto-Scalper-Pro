@@ -40,6 +40,17 @@ console.log("Volume >= 0.10 =", volume >= 0.10);
 console.log("Volume >= 0.15 =", volume >= 0.15);
 console.log("typeof volume =", typeof volume);
 console.trace("generateSignal called from");
+console.log("ema9 > ema21 =", ema9 > ema21);
+console.log("ema21 > ema50 =", ema21 > ema50);
+console.log("ema50 > ema200 =", ema50 > ema200);
+
+console.log("RSI =", rsi);
+console.log("MACD =", macd);
+console.log("ADX =", adx);
+
+console.log("Trend1H =", trend1h);
+console.log("Trend4H =", trend4h);
+console.log("Pattern =", pattern);
      
 let score = 0;
 
