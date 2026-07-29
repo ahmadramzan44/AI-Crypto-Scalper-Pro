@@ -299,7 +299,7 @@ if(trend1h === trend4h){
 }
      
 // =============================
-// Final Signal Decision V3
+// Final Signal Decision V4 (DEBUG)
 // =============================
 
 const trendConfirmed =
@@ -307,6 +307,20 @@ const trendConfirmed =
 
 const sellTrendConfirmed =
 (trend1h === "Bearish" && trend4h === "Bearish");
+
+console.log("========== SIGNAL DEBUG ==========");
+console.log({
+    bullish,
+    bearish,
+    score,
+    macd,
+    rsi,
+    adx,
+    volume,
+    trend1h,
+    trend4h,
+    pattern
+});
 
 // STRONG BUY
 if(
@@ -319,6 +333,8 @@ if(
     trend4h === "Bullish"
 
 ){
+
+    console.log("✅ STRONG BUY PASSED");
 
     signal = "STRONG BUY";
 
@@ -336,6 +352,8 @@ else if(
 
 ){
 
+    console.log("✅ BUY PASSED");
+
     signal = "BUY";
 
 }
@@ -351,6 +369,8 @@ else if(
     trend4h === "Bearish"
 
 ){
+
+    console.log("✅ STRONG SELL PASSED");
 
     signal = "STRONG SELL";
 
@@ -368,15 +388,19 @@ else if(
 
 ){
 
+    console.log("✅ SELL PASSED");
+
     signal = "SELL";
 
 }
 
 else{
 
+    console.log("❌ NO SIGNAL");
     signal = "WAIT";
 
 }
+     
 console.log("Score:", score);
 console.log("Bullish:", bullish);
 console.log("Bearish:", bearish);
