@@ -305,7 +305,6 @@ console.log({
 if(pattern === "Bullish Engulfing"){
 
     bullish++;
-    score += 10;
     confidence += 5;
     buyReasons.push("Bullish Engulfing");
 
@@ -313,7 +312,6 @@ if(pattern === "Bullish Engulfing"){
 else if(pattern === "Hammer"){
 
     bullish++;
-    score += 8;
     confidence += 4;
     buyReasons.push("Hammer");
 
@@ -321,7 +319,6 @@ else if(pattern === "Hammer"){
 else if(pattern === "Morning Star"){
 
     bullish++;
-    score += 10;
     confidence += 5;
     buyReasons.push("Morning Star");
 
@@ -329,7 +326,6 @@ else if(pattern === "Morning Star"){
 else if(pattern === "Bearish Engulfing"){
 
     bearish++;
-    score -= 10;
     confidence += 5;
     sellReasons.push("Bearish Engulfing");
 
@@ -337,7 +333,6 @@ else if(pattern === "Bearish Engulfing"){
 else if(pattern === "Shooting Star"){
 
     bearish++;
-    score -= 8;
     confidence += 4;
     sellReasons.push("Shooting Star");
 
@@ -345,7 +340,6 @@ else if(pattern === "Shooting Star"){
 else if(pattern === "Evening Star"){
 
     bearish++;
-    score -= 10;
     confidence += 5;
     sellReasons.push("Evening Star");
 
@@ -364,17 +358,15 @@ const distanceToSupport =
 // BUY ke liye resistance bohat qareeb hai
 if(distanceToResistance < 0.40){
 
-    score -= 15;
-    bearish++;
-    sellReasons.push("Resistance Too Close");
+    score -= 5;
+    buyReasons.push("Resistance Too Close");
 
 }
 
 // SELL ke liye support bohat qareeb hai
 if(distanceToSupport < 0.40){
 
-    score -= 15;
-    bullish--;
+    score -= 5;
     sellReasons.push("Support Too Close");
 
 }
@@ -382,8 +374,7 @@ if(distanceToSupport < 0.40){
 console.log({
     distanceToResistance,
     distanceToSupport
-});
-     
+});     
 // =============================
 // Multi Timeframe Filter
 // =============================
@@ -525,16 +516,28 @@ if(rsi < 20){
 
 }
 
-// Multi-Timeframe Confirmation (sirf 1H)
-if(signal.includes("BUY") && trend1h === "Bullish"){
+// Multi-Timeframe Confirmation
+if(signal.includes("BUY")){
 
-    confidence += 5;
+    if(trend1h === "Bullish"){
+        confidence += 5;
+    }
+
+    if(trend4h === "Bullish"){
+        confidence += 3;
+    }
 
 }
 
-if(signal.includes("SELL") && trend1h === "Bearish"){
+if(signal.includes("SELL")){
 
-    confidence += 5;
+    if(trend1h === "Bearish"){
+        confidence += 5;
+    }
+
+    if(trend4h === "Bearish"){
+        confidence += 3;
+    }
 
 }
 
@@ -553,18 +556,4 @@ if(signal === "WAIT"){
 }
 
 confidence = Math.max(0, Math.min(100, confidence));
-
-console.log("Confidence =", confidence);
-
-return {
-
-    signal,
-    confidence,
-    score,
-    bullish,
-    bearish,
-    buyReasons,
-    sellReasons
-
-};
 }
