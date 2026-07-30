@@ -184,7 +184,12 @@ else if(rsi > 80){
 // =============================
 // ADX
 // =============================
-
+console.log("After ADX");
+console.log({
+    score,
+    bullish,
+    bearish
+});
 if(adx >= 35){
 
     bullish++;
