@@ -16,11 +16,13 @@ function generateSignal(
     macd,
     volume,
     adx,
+    trend,
     trend1h,
     trend4h,
     pattern,
     atr
 ){
+     
 console.log("====== INPUTS ======");
 console.log({
     volume,
@@ -468,11 +470,12 @@ console.log({
 // STRONG BUY
 if(
 
-    bullish >= 5 &&
-    score >= 40 &&
+    bullish >= 6 &&
+    score >= 60 &&
     macd > 0 &&
-    adx >= 20 &&
-    volume >= 0.15 &&
+    adx >= 25 &&
+    volume >= 0.80 &&
+    trend === "Bullish" &&
     trend1h === "Bullish"
 
 ){
@@ -482,16 +485,16 @@ if(
     signal = "STRONG BUY";
 
 }
-
+     
 // BUY
 else if(
 
-    bullish >= 4 &&
-    score >= 20 &&
+    bullish >= 5 &&
+    score >= 45 &&
     macd > 0 &&
-    adx >= 15 &&
-    volume >= 0.10 &&
-    trend1h === "Bullish"
+    adx >= 20 &&
+    volume >= 0.50 &&
+    trend === "Bullish"
 
 ){
 
@@ -500,6 +503,7 @@ else if(
     signal = "BUY";
 
 }
+     
 // STRONG SELL
 else if(
 
@@ -529,33 +533,20 @@ trend1h === "Bearish"
 // SELL
 else if(
 
-bearish >= 4 &&
-score <= -15 &&
-macd <= 0 &&
-adx >= 15 &&
-trend1h === "Bearish"
+    bearish >= 5 &&
+    score <= -45 &&
+    macd < 0 &&
+    adx >= 20 &&
+    volume >= 0.50 &&
+    trend === "Bearish"
 
 ){
 
-    console.log(">>> SELL BLOCK ENTERED"); 
-
-    console.log("SELL CHECK", {
-        bearish,
-        score,
-        macd,
-        adx,
-        volume,
-        trend4h
-    }); 
-
-    console.log("Exact score =", score.toFixed(10));
-     
     console.log("✅ SELL PASSED");
 
     signal = "SELL";
 
 }
-
 else{
 
     console.log("❌ NO SIGNAL");
