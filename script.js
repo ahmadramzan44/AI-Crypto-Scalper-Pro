@@ -826,17 +826,6 @@ if(
 ){
     finalSignal = "WAIT";
 }
-    
-if(result.signal === "BUY" && trend1h === "Bullish"){
-
-    finalSignal = "STRONG BUY";
-
-}
-else if(result.signal === "SELL" && trend1h === "Bearish"){
-
-    finalSignal = "STRONG SELL";
-
-}
 
 document.getElementById("signal").innerText = finalSignal;
 
