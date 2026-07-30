@@ -278,34 +278,21 @@ console.log({
     bullish,
     bearish
 });
-if(volume >= 0.50){
-
+if(volume >= 0.30){
     bullish++;
     score += 10;
-    buyReasons.push("High Volume");
-
 }
-else if(volume >= 0.20){
-
+else if(volume >= 0.15){
     bullish++;
     score += 5;
-    buyReasons.push("Healthy Volume");
-
 }
-else if(volume >= 0.10){
-
+else if(volume >= 0.08){
     score += 0;
-    buyReasons.push("Normal Volume");
-
 }
 else{
-
     bearish++;
     score -= 5;
-    sellReasons.push("Very Low Volume");
-
-}
-     
+}     
 // =============================
 // Pattern Bonus
 // =============================
@@ -551,7 +538,7 @@ else if(
     score <= -35 &&
     macd <= 0 &&
     adx >= 20 &&
-    volume >= 0.50 &&
+    volume >= 0.30 &&
     trend === "Bearish" &&
     trend1h === "Bearish" &&
     supportDistance >= 0.30
@@ -581,7 +568,7 @@ else if(
     score <= -45 &&
     macd < 0 &&
     adx >= 20 &&
-    volume >= 0.50 &&
+    volume >= 0.30 &&
     trend === "Bearish" &&
     trend1h === "Bearish" &&
     supportDistance >= 0.30
