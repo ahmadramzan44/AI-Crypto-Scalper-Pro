@@ -390,6 +390,7 @@ console.log({
     strongBuyAdx: adx >= 20,
     strongBuyVolume: volume >= 0.15,
     strongBuyTrend: trend4h === "Bullish"
+    strongBuyTrend1h: trend1h === "Bullish",
 });
 
 console.log({
@@ -399,6 +400,7 @@ console.log({
     buyAdx: adx >= 15,
     buyVolume: volume >= 0.10,
     buyTrend: trend4h === "Bullish"
+    buyTrend1h: trend1h === "Bullish", 
 });
 
   console.log({
