@@ -265,12 +265,12 @@ rsi,
 macd,
 volumeRatio,
 adx,
+trend,
 trend1h,
 trend4h,
 pattern,
 atr
 );
-
 let signal =
 result.signal;
 
@@ -786,6 +786,7 @@ else{
     document.getElementById("trend4h").className = "wait";
 
 }
+    
 const result =
 generateSignal(
 price,
@@ -799,12 +800,13 @@ rsi,
 macd,
 volumeRatio,
 adx,
+trend,
 trend1h,
 trend4h,
 pattern,
 atr
 );
-
+    
 let finalSignal = result.signal;
 
 // =============================
