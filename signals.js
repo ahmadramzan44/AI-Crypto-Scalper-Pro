@@ -467,20 +467,8 @@ console.log({
     sellVolume: volume >= 0.10,
     sellTrend: trend4h === "Bearish"
 });     
-    console.log("trend1h =", trend1h, "trend4h =", trend4h);
-
-console.log({
-    bullish: bullish >= 5,
-    score: score >= 40,
-    macd: macd > 0,
-    adx: adx >= 20,
-    volume: volume >= 0.15,
-    trend1h: trend1h === "Bullish"
-});
-
-// STRONG BUY
-if(
-
+   
+const strongBuyPass =
     bullish >= 6 &&
     score >= 60 &&
     macd > 0 &&
@@ -488,19 +476,9 @@ if(
     volume >= 0.80 &&
     trend === "Bullish" &&
     trend1h === "Bullish" &&
-    resistanceDistance >= 0.30 
+    resistanceDistance >= 0.30;
 
-){
-
-    console.log("✅ STRONG BUY PASSED");
-
-    signal = "STRONG BUY";
-
-}
-     
-// BUY
-else if(
-
+const buyPass =
     bullish >= 5 &&
     score >= 45 &&
     macd > 0 &&
@@ -508,9 +486,46 @@ else if(
     volume >= 0.50 &&
     trend === "Bullish" &&
     trend1h === "Bullish" &&
-    resistanceDistance >= 0.30
+    resistanceDistance >= 0.30;
 
-){
+console.log("===== BUY DEBUG =====");
+console.table({
+    bullish,
+    bearish,
+    score,
+    macd,
+    adx,
+    volume,
+    trend,
+    trend1h,
+    trend4h,
+    resistanceDistance,
+    supportDistance,
+
+    bullishPass: bullish >= 5,
+    scorePass: score >= 45,
+    macdPass: macd > 0,
+    adxPass: adx >= 20,
+    volumePass: volume >= 0.50,
+    trendPass: trend === "Bullish",
+    trend1hPass: trend1h === "Bullish",
+    resistancePass: resistanceDistance >= 0.30,
+
+    buyPass,
+    strongBuyPass
+});
+     
+// STRONG BUY
+if (strongBuyPass) {
+
+    console.log("✅ STRONG BUY PASSED");
+
+    signal = "STRONG BUY";
+
+}
+
+// BUY
+else if (buyPass) {
 
     console.log({
         bullish,
@@ -532,14 +547,14 @@ else if(
 // STRONG SELL
 else if(
 
-bearish >= 5 &&
-score <= -35 &&
-macd <= 0 &&
-adx >= 20 &&
-volume >= 0.50 &&
-trend === "Bearish" &&
-trend1h === "Bearish" &&
-supportDistance >= 0.30
+    bearish >= 5 &&
+    score <= -35 &&
+    macd <= 0 &&
+    adx >= 20 &&
+    volume >= 0.50 &&
+    trend === "Bearish" &&
+    trend1h === "Bearish" &&
+    supportDistance >= 0.30
 
 ){
 
@@ -588,13 +603,14 @@ else if(
 
     signal = "SELL";
 
-}else{
+}
+else{
 
     console.log("❌ NO SIGNAL");
+
     signal = "WAIT";
 
-}
-     
+}     
 console.log("Score:", score);
 console.log("Bullish:", bullish);
 console.log("Bearish:", bearish);
