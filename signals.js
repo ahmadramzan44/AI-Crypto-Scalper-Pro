@@ -556,4 +556,15 @@ if(signal === "WAIT"){
 }
 
 confidence = Math.max(0, Math.min(100, confidence));
+
+ return {
+    signal,
+    confidence,
+    score,
+    bullish,
+    bearish,
+    buyReasons,
+    sellReasons
+};
+     
 }
