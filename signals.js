@@ -67,7 +67,18 @@ let bearish = 0;
 let buyReasons = [];
 
 let sellReasons = [];
-    
+
+const resistanceDistance =
+((resistance - price) / price) * 100;
+
+const supportDistance =
+((price - support) / price) * 100;
+
+console.log({
+    resistanceDistance,
+    supportDistance
+});
+     
 // =============================
 // EMA Trend Structure
 // =============================
@@ -477,6 +488,7 @@ if(
     volume >= 0.80 &&
     trend === "Bullish" &&
     trend1h === "Bullish"
+    resistanceDistance >= 0.30 
 
 ){
 
@@ -494,16 +506,29 @@ else if(
     macd > 0 &&
     adx >= 20 &&
     volume >= 0.50 &&
-    trend === "Bullish"
+    trend === "Bullish" &&
+    trend1h === "Bullish" &&
+    resistanceDistance >= 0.30
 
 ){
+
+    console.log({
+        bullish,
+        score,
+        macd,
+        adx,
+        volume,
+        trend,
+        trend1h,
+        resistanceDistance
+    });
 
     console.log("✅ BUY PASSED");
 
     signal = "BUY";
 
 }
-     
+
 // STRONG SELL
 else if(
 
@@ -511,19 +536,23 @@ bearish >= 5 &&
 score <= -35 &&
 macd <= 0 &&
 adx >= 20 &&
-trend1h === "Bearish"
+volume >= 0.50 &&
+trend === "Bearish" &&
+trend1h === "Bearish" &&
+supportDistance >= 0.30
 
 ){
 
-    console.log("SELL CHECK", {
-    bearish,
-    score,
-    macd,
-    adx,
-    volume,
-    trend4h
-}); 
-     
+    console.log({
+        bearish,
+        score,
+        macd,
+        adx,
+        volume,
+        trend1h,
+        supportDistance
+    });
+
     console.log("✅ STRONG SELL PASSED");
 
     signal = "STRONG SELL";
@@ -538,16 +567,28 @@ else if(
     macd < 0 &&
     adx >= 20 &&
     volume >= 0.50 &&
-    trend === "Bearish"
+    trend === "Bearish" &&
+    trend1h === "Bearish" &&
+    supportDistance >= 0.30
 
 ){
+
+    console.log({
+        bearish,
+        score,
+        macd,
+        adx,
+        volume,
+        trend,
+        trend1h,
+        supportDistance
+    });
 
     console.log("✅ SELL PASSED");
 
     signal = "SELL";
 
-}
-else{
+}else{
 
     console.log("❌ NO SIGNAL");
     signal = "WAIT";
