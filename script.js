@@ -610,7 +610,7 @@ else{
 
 }
 document.getElementById("volume").innerText =
-volume.toFixed(2);
+volumeRatio.toFixed(2);
 
 document.getElementById("adx").innerText =
 adx.toFixed(1);
