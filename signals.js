@@ -397,7 +397,6 @@ const strongBuyPass =
     adx >= 25 &&
     volume >= 0.30 &&
     trend === "Bullish" &&
-    trend1h === "Bullish" &&
     resistanceDistance >= 0.10;
 
 // BUY
@@ -408,7 +407,6 @@ const buyPass =
     adx >= 20 &&
     volume >= 0.15 &&
     trend === "Bullish" &&
-    trend1h === "Bullish" &&
     resistanceDistance >= 0.10;
 
 // STRONG SELL
@@ -419,7 +417,6 @@ const strongSellPass =
     adx >= 25 &&
     volume >= 0.30 &&
     trend === "Bearish" &&
-    trend1h === "Bearish" &&
     supportDistance >= 0.10;
 
 // SELL
@@ -430,7 +427,6 @@ const sellPass =
     adx >= 20 &&
     volume >= 0.15 &&
     trend === "Bearish" &&
-    trend1h === "Bearish" &&
     supportDistance >= 0.10;
 
 
