@@ -815,20 +815,16 @@ let finalSignal = result.signal;
 
 if(
     finalSignal === "BUY" &&
-    (trend1h === "Bearish" || trend4h === "Bearish")
+    trend4h === "Bearish"
 ){
-
     finalSignal = "WAIT";
-
 }
 
 if(
     finalSignal === "SELL" &&
-    (trend1h === "Bullish" || trend4h === "Bullish")
+    trend4h === "Bullish"
 ){
-
     finalSignal = "WAIT";
-
 }
     
 if(result.signal === "BUY" && trend1h === "Bullish"){
