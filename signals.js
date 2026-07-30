@@ -350,6 +350,40 @@ else if(pattern === "Evening Star"){
     sellReasons.push("Evening Star");
 
 }
+
+// =============================
+// Entry Distance Filter (15m Scalping)
+// =============================
+
+const distanceToResistance =
+((resistance - price) / price) * 100;
+
+const distanceToSupport =
+((price - support) / price) * 100;
+
+// BUY ke liye resistance bohat qareeb hai
+if(distanceToResistance < 0.40){
+
+    score -= 15;
+    bearish++;
+    sellReasons.push("Resistance Too Close");
+
+}
+
+// SELL ke liye support bohat qareeb hai
+if(distanceToSupport < 0.40){
+
+    score -= 15;
+    bullish--;
+    sellReasons.push("Support Too Close");
+
+}
+
+console.log({
+    distanceToResistance,
+    distanceToSupport
+});
+     
 // =============================
 // Multi Timeframe Filter
 // =============================
