@@ -420,7 +420,17 @@ console.log({
     sellVolume: volume >= 0.10,
     sellTrend: trend4h === "Bearish"
 });     
-    console.log("trend1h =", trend1h, "trend4h =", trend4h); 
+    console.log("trend1h =", trend1h, "trend4h =", trend4h);
+
+console.log({
+    bullish: bullish >= 5,
+    score: score >= 40,
+    macd: macd > 0,
+    adx: adx >= 20,
+    volume: volume >= 0.15,
+    trend1h: trend1h === "Bullish"
+});
+
 // STRONG BUY
 if(
 
@@ -440,21 +450,22 @@ if(
 }
 
 // BUY
-console.log({
-    bullish: bullish >= 5,
-    score: score >= 40,
-    macd: macd > 0,
-    adx: adx >= 20,
-    volume: volume >= 0.15,
-    trend1h: trend1h === "Bullish"
-});
+else if(
+
+    bullish >= 4 &&
+    score >= 20 &&
+    macd > 0 &&
+    adx >= 15 &&
+    volume >= 0.10 &&
+    trend1h === "Bullish"
+
+){
 
     console.log("✅ BUY PASSED");
 
     signal = "BUY";
 
 }
-
 // STRONG SELL
 else if(
 
