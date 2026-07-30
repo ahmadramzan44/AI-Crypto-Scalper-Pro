@@ -612,6 +612,8 @@ else{
 document.getElementById("volume").innerText =
 volumeRatio.toFixed(2);
 
+console.log("Volume Ratio =", volumeRatio);
+console.log("Type =", typeof volumeRatio);
 document.getElementById("adx").innerText =
 adx.toFixed(1);
 if(adx >= 25){
