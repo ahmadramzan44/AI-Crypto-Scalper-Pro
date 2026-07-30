@@ -559,16 +559,7 @@ const entryHigh =
 document.getElementById("entryZone").innerText =
 entryLow + " - " + entryHigh;
 
-const volume =
-calculateVolume(candles);
-
-const avgVolume =
-candles
-.slice(-20)
-.reduce((sum, c) => sum + parseFloat(c[5]), 0) / 20;
-
-const volumeRatio =
-avgVolume > 0 ? volume / avgVolume : 0;
+const volumeRatio = calculateVolume(candles);
     
 const adx =
 calculateADX(candles);
