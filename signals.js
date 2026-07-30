@@ -487,7 +487,7 @@ if(
     adx >= 25 &&
     volume >= 0.80 &&
     trend === "Bullish" &&
-    trend1h === "Bullish"
+    trend1h === "Bullish" &&
     resistanceDistance >= 0.30 
 
 ){
