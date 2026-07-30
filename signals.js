@@ -395,209 +395,81 @@ if(trend1h === trend4h){
 }
      
 // =============================
-// Final Signal Decision V4 (DEBUG)
+// FINAL SIGNAL ENGINE V5
 // =============================
 
-const trendConfirmed =
-(trend1h === "Bullish" && trend4h === "Bullish");
-
-const sellTrendConfirmed =
-(trend1h === "Bearish" && trend4h === "Bearish");
-
-console.log("========== SIGNAL DEBUG ==========");
-console.log({
-    bullish,
-    bearish,
-    score,
-    macd,
-    rsi,
-    adx,
-    volume,
-    trend1h,
-    trend4h,
-    pattern
-});
-console.log({
-    strongBuyBullish: bullish >= 5,
-    strongBuyScore: score >= 40,
-    strongBuyMacd: macd > 0,
-    strongBuyAdx: adx >= 20,
-    strongBuyVolume: volume >= 0.15,
-    strongBuyTrend: trend4h === "Bullish",
-    strongBuyTrend1h: trend1h === "Bullish"
-});
-
-console.log({
-    buyBullish: bullish >= 4,
-    buyScore: score >= 20,
-    buyMacd: macd > 0,
-    buyAdx: adx >= 15,
-    buyVolume: volume >= 0.10,
-    buyTrend: trend4h === "Bullish",
-    buyTrend1h: trend1h === "Bullish"
-});
-
-  console.log({
-    strongSellBearish: bearish >= 5,
-    strongSellScore: score <= -40,
-    strongSellMacd: macd < 0,
-    strongSellAdx: adx >= 20,
-    strongSellVolume: volume >= 0.15,
-    strongSellTrend: trend4h === "Bearish"
-});
-
-console.log({
-    sellBearish: bearish >= 4,
-    sellScore: score <= -20,
-    sellMacd: macd < 0,
-    sellAdx: adx >= 15,
-    sellVolume: volume >= 0.10,
-    sellTrend: trend4h === "Bearish"
-});     
-   
+// STRONG BUY
 const strongBuyPass =
-    bullish >= 6 &&
-    score >= 60 &&
+    bullish >= 5 &&
+    score >= 55 &&
     macd > 0 &&
     adx >= 25 &&
-    volume >= 0.80 &&
+    volume >= 0.30 &&
     trend === "Bullish" &&
     trend1h === "Bullish" &&
-    resistanceDistance >= 0.30;
+    resistanceDistance >= 0.10;
 
+// BUY
 const buyPass =
-    bullish >= 5 &&
-    score >= 45 &&
+    bullish >= 4 &&
+    score >= 40 &&
     macd > 0 &&
     adx >= 20 &&
-    volume >= 0.50 &&
+    volume >= 0.15 &&
     trend === "Bullish" &&
     trend1h === "Bullish" &&
-    resistanceDistance >= 0.30;
+    resistanceDistance >= 0.10;
 
-console.log("===== BUY DEBUG =====");
-console.table({
-    bullish,
-    bearish,
-    score,
-    macd,
-    adx,
-    volume,
-    trend,
-    trend1h,
-    trend4h,
-    resistanceDistance,
-    supportDistance,
+// STRONG SELL
+const strongSellPass =
+    bearish >= 5 &&
+    score <= -55 &&
+    macd < 0 &&
+    adx >= 25 &&
+    volume >= 0.30 &&
+    trend === "Bearish" &&
+    trend1h === "Bearish" &&
+    supportDistance >= 0.10;
 
-    bullishPass: bullish >= 5,
-    scorePass: score >= 45,
-    macdPass: macd > 0,
-    adxPass: adx >= 20,
-    volumePass: volume >= 0.50,
-    trendPass: trend === "Bullish",
-    trend1hPass: trend1h === "Bullish",
-    resistancePass: resistanceDistance >= 0.30,
+// SELL
+const sellPass =
+    bearish >= 4 &&
+    score <= -40 &&
+    macd < 0 &&
+    adx >= 20 &&
+    volume >= 0.15 &&
+    trend === "Bearish" &&
+    trend1h === "Bearish" &&
+    supportDistance >= 0.10;
 
-    buyPass,
-    strongBuyPass
-});
-     
-// STRONG BUY
+
+// Final Decision
+
 if (strongBuyPass) {
-
-    console.log("✅ STRONG BUY PASSED");
 
     signal = "STRONG BUY";
 
 }
-
-// BUY
 else if (buyPass) {
-
-    console.log({
-        bullish,
-        score,
-        macd,
-        adx,
-        volume,
-        trend,
-        trend1h,
-        resistanceDistance
-    });
-
-    console.log("✅ BUY PASSED");
 
     signal = "BUY";
 
 }
-
-// STRONG SELL
-else if(
-
-    bearish >= 5 &&
-    score <= -35 &&
-    macd <= 0 &&
-    adx >= 20 &&
-    volume >= 0.30 &&
-    trend === "Bearish" &&
-    trend1h === "Bearish" &&
-    supportDistance >= 0.30
-
-){
-
-    console.log({
-        bearish,
-        score,
-        macd,
-        adx,
-        volume,
-        trend1h,
-        supportDistance
-    });
-
-    console.log("✅ STRONG SELL PASSED");
+else if (strongSellPass) {
 
     signal = "STRONG SELL";
 
 }
-
-// SELL
-else if(
-
-    bearish >= 5 &&
-    score <= -45 &&
-    macd < 0 &&
-    adx >= 20 &&
-    volume >= 0.30 &&
-    trend === "Bearish" &&
-    trend1h === "Bearish" &&
-    supportDistance >= 0.30
-
-){
-
-    console.log({
-        bearish,
-        score,
-        macd,
-        adx,
-        volume,
-        trend,
-        trend1h,
-        supportDistance
-    });
-
-    console.log("✅ SELL PASSED");
+else if (sellPass) {
 
     signal = "SELL";
 
 }
-else{
-
-    console.log("❌ NO SIGNAL");
+else {
 
     signal = "WAIT";
 
-}     
+}
 console.log("Score:", score);
 console.log("Bullish:", bullish);
 console.log("Bearish:", bearish);
