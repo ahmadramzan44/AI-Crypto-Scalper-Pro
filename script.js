@@ -901,6 +901,21 @@ if(
 ){
     aiScore += 10;
 }
+
+// Penalty for opposite higher timeframe
+if(finalSignal.includes("BUY") && trend1h === "Bearish"){
+    aiScore -= 15;
+}
+
+if(finalSignal.includes("SELL") && trend1h === "Bullish"){
+    aiScore -= 15;
+}
+
+// Low volume penalty
+if(volumeRatio < 0.20){
+    aiScore -= 10;
+}
+    
 // Pattern Bonus
 
 // Pattern Bonus
